@@ -1,0 +1,629 @@
+package org.acme.model;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import org.acme.model.OrganizationApplicationGrantData;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+
+
+@JsonTypeName("OrganizationInputData")
+@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+public class OrganizationInputData   {
+  private Boolean supportAreaEnabled;
+  private @Valid List<Long> externalOrganizationIds = new ArrayList<>();
+  private @Valid List<@Valid OrganizationApplicationGrantData> accessGrants = new ArrayList<>();
+  private String name;
+  private String matchCode;
+  private String name2;
+  private String streetAndNumber;
+  private String appendix;
+  private String country;
+  private String zipCode;
+  private String city;
+  private String district;
+  private String zipCodePoBox;
+  private String poBox;
+  private String phone;
+  private String mobile;
+  private String fax;
+  private String email;
+  private String website;
+  private UUID tenantId;
+  private UUID parentId;
+  private Boolean isMandator;
+  private Boolean previewFeatures;
+  private UUID designProfileId;
+
+  public OrganizationInputData() {
+  }
+
+  @JsonCreator
+  public OrganizationInputData(
+    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "matchCode") String matchCode,
+    @JsonProperty(required = true, value = "streetAndNumber") String streetAndNumber,
+    @JsonProperty(required = true, value = "country") String country,
+    @JsonProperty(required = true, value = "zipCode") String zipCode,
+    @JsonProperty(required = true, value = "city") String city,
+    @JsonProperty(required = true, value = "email") String email,
+    @JsonProperty(required = true, value = "tenantId") UUID tenantId
+  ) {
+    this.name = name;
+    this.matchCode = matchCode;
+    this.streetAndNumber = streetAndNumber;
+    this.country = country;
+    this.zipCode = zipCode;
+    this.city = city;
+    this.email = email;
+    this.tenantId = tenantId;
+  }
+
+  /**
+   * If the  support area is enabled for this organization.
+   **/
+  public OrganizationInputData supportAreaEnabled(Boolean supportAreaEnabled) {
+    this.supportAreaEnabled = supportAreaEnabled;
+    return this;
+  }
+
+  
+  @JsonProperty("supportAreaEnabled")
+  public Boolean getSupportAreaEnabled() {
+    return supportAreaEnabled;
+  }
+
+  @JsonProperty("supportAreaEnabled")
+  public void setSupportAreaEnabled(Boolean supportAreaEnabled) {
+    this.supportAreaEnabled = supportAreaEnabled;
+  }
+
+  /**
+   * All external organizations linked to this portal organization. Can be omitted.
+   **/
+  public OrganizationInputData externalOrganizationIds(List<Long> externalOrganizationIds) {
+    this.externalOrganizationIds = externalOrganizationIds;
+    return this;
+  }
+
+  
+  @JsonProperty("externalOrganizationIds")
+  public List<Long> getExternalOrganizationIds() {
+    return externalOrganizationIds;
+  }
+
+  @JsonProperty("externalOrganizationIds")
+  public void setExternalOrganizationIds(List<Long> externalOrganizationIds) {
+    this.externalOrganizationIds = externalOrganizationIds;
+  }
+
+  public OrganizationInputData addExternalOrganizationIdsItem(Long externalOrganizationIdsItem) {
+    if (this.externalOrganizationIds == null) {
+      this.externalOrganizationIds = new ArrayList<>();
+    }
+
+    this.externalOrganizationIds.add(externalOrganizationIdsItem);
+    return this;
+  }
+
+  public OrganizationInputData removeExternalOrganizationIdsItem(Long externalOrganizationIdsItem) {
+    if (externalOrganizationIdsItem != null && this.externalOrganizationIds != null) {
+      this.externalOrganizationIds.remove(externalOrganizationIdsItem);
+    }
+
+    return this;
+  }
+  /**
+   * List of all applications this organization is allowed to use.
+   **/
+  public OrganizationInputData accessGrants(List<@Valid OrganizationApplicationGrantData> accessGrants) {
+    this.accessGrants = accessGrants;
+    return this;
+  }
+
+  
+  @JsonProperty("accessGrants")
+  @Valid public List<@Valid OrganizationApplicationGrantData> getAccessGrants() {
+    return accessGrants;
+  }
+
+  @JsonProperty("accessGrants")
+  public void setAccessGrants(List<@Valid OrganizationApplicationGrantData> accessGrants) {
+    this.accessGrants = accessGrants;
+  }
+
+  public OrganizationInputData addAccessGrantsItem(OrganizationApplicationGrantData accessGrantsItem) {
+    if (this.accessGrants == null) {
+      this.accessGrants = new ArrayList<>();
+    }
+
+    this.accessGrants.add(accessGrantsItem);
+    return this;
+  }
+
+  public OrganizationInputData removeAccessGrantsItem(OrganizationApplicationGrantData accessGrantsItem) {
+    if (accessGrantsItem != null && this.accessGrants != null) {
+      this.accessGrants.remove(accessGrantsItem);
+    }
+
+    return this;
+  }
+  /**
+   **/
+  public OrganizationInputData name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "name")
+  @NotNull  @Pattern(regexp="\\S") @Size(max=255)public String getName() {
+    return name;
+  }
+
+  @JsonProperty(required = true, value = "name")
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Matchcode of this object. Matchcodes are upper cases abbreviations of e.g. the object name, or the upper cased functional key of the object.
+   **/
+  public OrganizationInputData matchCode(String matchCode) {
+    this.matchCode = matchCode;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "matchCode")
+  @NotNull  @Pattern(regexp="[A-Z0-9]*") @Size(max=100)public String getMatchCode() {
+    return matchCode;
+  }
+
+  @JsonProperty(required = true, value = "matchCode")
+  public void setMatchCode(String matchCode) {
+    this.matchCode = matchCode;
+  }
+
+  /**
+   **/
+  public OrganizationInputData name2(String name2) {
+    this.name2 = name2;
+    return this;
+  }
+
+  
+  @JsonProperty("name2")
+   @Size(max=255)public String getName2() {
+    return name2;
+  }
+
+  @JsonProperty("name2")
+  public void setName2(String name2) {
+    this.name2 = name2;
+  }
+
+  /**
+   **/
+  public OrganizationInputData streetAndNumber(String streetAndNumber) {
+    this.streetAndNumber = streetAndNumber;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "streetAndNumber")
+  @NotNull  @Pattern(regexp="\\S") @Size(max=255)public String getStreetAndNumber() {
+    return streetAndNumber;
+  }
+
+  @JsonProperty(required = true, value = "streetAndNumber")
+  public void setStreetAndNumber(String streetAndNumber) {
+    this.streetAndNumber = streetAndNumber;
+  }
+
+  /**
+   **/
+  public OrganizationInputData appendix(String appendix) {
+    this.appendix = appendix;
+    return this;
+  }
+
+  
+  @JsonProperty("appendix")
+   @Size(max=255)public String getAppendix() {
+    return appendix;
+  }
+
+  @JsonProperty("appendix")
+  public void setAppendix(String appendix) {
+    this.appendix = appendix;
+  }
+
+  /**
+   * ISO 3166 ALPHA-2 country code.
+   **/
+  public OrganizationInputData country(String country) {
+    this.country = country;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "country")
+  @NotNull  @Pattern(regexp="[A-Z]{2}")public String getCountry() {
+    return country;
+  }
+
+  @JsonProperty(required = true, value = "country")
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  /**
+   * Has to match country zip code pattern
+   **/
+  public OrganizationInputData zipCode(String zipCode) {
+    this.zipCode = zipCode;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "zipCode")
+  @NotNull  @Pattern(regexp="\\S") @Size(max=20)public String getZipCode() {
+    return zipCode;
+  }
+
+  @JsonProperty(required = true, value = "zipCode")
+  public void setZipCode(String zipCode) {
+    this.zipCode = zipCode;
+  }
+
+  /**
+   **/
+  public OrganizationInputData city(String city) {
+    this.city = city;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "city")
+  @NotNull  @Pattern(regexp="\\S") @Size(max=255)public String getCity() {
+    return city;
+  }
+
+  @JsonProperty(required = true, value = "city")
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  /**
+   **/
+  public OrganizationInputData district(String district) {
+    this.district = district;
+    return this;
+  }
+
+  
+  @JsonProperty("district")
+   @Size(max=60)public String getDistrict() {
+    return district;
+  }
+
+  @JsonProperty("district")
+  public void setDistrict(String district) {
+    this.district = district;
+  }
+
+  /**
+   **/
+  public OrganizationInputData zipCodePoBox(String zipCodePoBox) {
+    this.zipCodePoBox = zipCodePoBox;
+    return this;
+  }
+
+  
+  @JsonProperty("zipCodePoBox")
+   @Size(max=20)public String getZipCodePoBox() {
+    return zipCodePoBox;
+  }
+
+  @JsonProperty("zipCodePoBox")
+  public void setZipCodePoBox(String zipCodePoBox) {
+    this.zipCodePoBox = zipCodePoBox;
+  }
+
+  /**
+   **/
+  public OrganizationInputData poBox(String poBox) {
+    this.poBox = poBox;
+    return this;
+  }
+
+  
+  @JsonProperty("poBox")
+   @Size(max=100)public String getPoBox() {
+    return poBox;
+  }
+
+  @JsonProperty("poBox")
+  public void setPoBox(String poBox) {
+    this.poBox = poBox;
+  }
+
+  /**
+   **/
+  public OrganizationInputData phone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  
+  @JsonProperty("phone")
+   @Pattern(regexp="^[0-9\\-\\+/\\(\\ \\)]+$") @Size(max=80)public String getPhone() {
+    return phone;
+  }
+
+  @JsonProperty("phone")
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  /**
+   **/
+  public OrganizationInputData mobile(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  
+  @JsonProperty("mobile")
+   @Pattern(regexp="^[0-9\\-\\+/\\(\\ \\)]+$") @Size(max=80)public String getMobile() {
+    return mobile;
+  }
+
+  @JsonProperty("mobile")
+  public void setMobile(String mobile) {
+    this.mobile = mobile;
+  }
+
+  /**
+   **/
+  public OrganizationInputData fax(String fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  
+  @JsonProperty("fax")
+   @Pattern(regexp="^[0-9\\-\\+/\\(\\ \\)]+$") @Size(max=80)public String getFax() {
+    return fax;
+  }
+
+  @JsonProperty("fax")
+  public void setFax(String fax) {
+    this.fax = fax;
+  }
+
+  /**
+   **/
+  public OrganizationInputData email(String email) {
+    this.email = email;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "email")
+  @NotNull public String getEmail() {
+    return email;
+  }
+
+  @JsonProperty(required = true, value = "email")
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  /**
+   **/
+  public OrganizationInputData website(String website) {
+    this.website = website;
+    return this;
+  }
+
+  
+  @JsonProperty("website")
+   @Size(max=255)public String getWebsite() {
+    return website;
+  }
+
+  @JsonProperty("website")
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
+  /**
+   **/
+  public OrganizationInputData tenantId(UUID tenantId) {
+    this.tenantId = tenantId;
+    return this;
+  }
+
+  
+  @JsonProperty(required = true, value = "tenantId")
+  @NotNull  @Pattern(regexp="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")public UUID getTenantId() {
+    return tenantId;
+  }
+
+  @JsonProperty(required = true, value = "tenantId")
+  public void setTenantId(UUID tenantId) {
+    this.tenantId = tenantId;
+  }
+
+  /**
+   **/
+  public OrganizationInputData parentId(UUID parentId) {
+    this.parentId = parentId;
+    return this;
+  }
+
+  
+  @JsonProperty("parentId")
+   @Pattern(regexp="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")public UUID getParentId() {
+    return parentId;
+  }
+
+  @JsonProperty("parentId")
+  public void setParentId(UUID parentId) {
+    this.parentId = parentId;
+  }
+
+  /**
+   **/
+  public OrganizationInputData isMandator(Boolean isMandator) {
+    this.isMandator = isMandator;
+    return this;
+  }
+
+  
+  @JsonProperty("isMandator")
+  public Boolean getIsMandator() {
+    return isMandator;
+  }
+
+  @JsonProperty("isMandator")
+  public void setIsMandator(Boolean isMandator) {
+    this.isMandator = isMandator;
+  }
+
+  /**
+   * Decides if preview features should be activated for contexts of this organization.
+   **/
+  public OrganizationInputData previewFeatures(Boolean previewFeatures) {
+    this.previewFeatures = previewFeatures;
+    return this;
+  }
+
+  
+  @JsonProperty("previewFeatures")
+  public Boolean getPreviewFeatures() {
+    return previewFeatures;
+  }
+
+  @JsonProperty("previewFeatures")
+  public void setPreviewFeatures(Boolean previewFeatures) {
+    this.previewFeatures = previewFeatures;
+  }
+
+  /**
+   **/
+  public OrganizationInputData designProfileId(UUID designProfileId) {
+    this.designProfileId = designProfileId;
+    return this;
+  }
+
+  
+  @JsonProperty("designProfileId")
+   @Pattern(regexp="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")public UUID getDesignProfileId() {
+    return designProfileId;
+  }
+
+  @JsonProperty("designProfileId")
+  public void setDesignProfileId(UUID designProfileId) {
+    this.designProfileId = designProfileId;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    OrganizationInputData organizationInputData = (OrganizationInputData) o;
+    return Objects.equals(this.supportAreaEnabled, organizationInputData.supportAreaEnabled) &&
+        Objects.equals(this.externalOrganizationIds, organizationInputData.externalOrganizationIds) &&
+        Objects.equals(this.accessGrants, organizationInputData.accessGrants) &&
+        Objects.equals(this.name, organizationInputData.name) &&
+        Objects.equals(this.matchCode, organizationInputData.matchCode) &&
+        Objects.equals(this.name2, organizationInputData.name2) &&
+        Objects.equals(this.streetAndNumber, organizationInputData.streetAndNumber) &&
+        Objects.equals(this.appendix, organizationInputData.appendix) &&
+        Objects.equals(this.country, organizationInputData.country) &&
+        Objects.equals(this.zipCode, organizationInputData.zipCode) &&
+        Objects.equals(this.city, organizationInputData.city) &&
+        Objects.equals(this.district, organizationInputData.district) &&
+        Objects.equals(this.zipCodePoBox, organizationInputData.zipCodePoBox) &&
+        Objects.equals(this.poBox, organizationInputData.poBox) &&
+        Objects.equals(this.phone, organizationInputData.phone) &&
+        Objects.equals(this.mobile, organizationInputData.mobile) &&
+        Objects.equals(this.fax, organizationInputData.fax) &&
+        Objects.equals(this.email, organizationInputData.email) &&
+        Objects.equals(this.website, organizationInputData.website) &&
+        Objects.equals(this.tenantId, organizationInputData.tenantId) &&
+        Objects.equals(this.parentId, organizationInputData.parentId) &&
+        Objects.equals(this.isMandator, organizationInputData.isMandator) &&
+        Objects.equals(this.previewFeatures, organizationInputData.previewFeatures) &&
+        Objects.equals(this.designProfileId, organizationInputData.designProfileId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(supportAreaEnabled, externalOrganizationIds, accessGrants, name, matchCode, name2, streetAndNumber, appendix, country, zipCode, city, district, zipCodePoBox, poBox, phone, mobile, fax, email, website, tenantId, parentId, isMandator, previewFeatures, designProfileId);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OrganizationInputData {\n");
+    
+    sb.append("    supportAreaEnabled: ").append(toIndentedString(supportAreaEnabled)).append("\n");
+    sb.append("    externalOrganizationIds: ").append(toIndentedString(externalOrganizationIds)).append("\n");
+    sb.append("    accessGrants: ").append(toIndentedString(accessGrants)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    matchCode: ").append(toIndentedString(matchCode)).append("\n");
+    sb.append("    name2: ").append(toIndentedString(name2)).append("\n");
+    sb.append("    streetAndNumber: ").append(toIndentedString(streetAndNumber)).append("\n");
+    sb.append("    appendix: ").append(toIndentedString(appendix)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    zipCode: ").append(toIndentedString(zipCode)).append("\n");
+    sb.append("    city: ").append(toIndentedString(city)).append("\n");
+    sb.append("    district: ").append(toIndentedString(district)).append("\n");
+    sb.append("    zipCodePoBox: ").append(toIndentedString(zipCodePoBox)).append("\n");
+    sb.append("    poBox: ").append(toIndentedString(poBox)).append("\n");
+    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");
+    sb.append("    fax: ").append(toIndentedString(fax)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
+    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
+    sb.append("    isMandator: ").append(toIndentedString(isMandator)).append("\n");
+    sb.append("    previewFeatures: ").append(toIndentedString(previewFeatures)).append("\n");
+    sb.append("    designProfileId: ").append(toIndentedString(designProfileId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+}
+
