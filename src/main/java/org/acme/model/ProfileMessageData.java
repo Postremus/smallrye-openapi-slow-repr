@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ProfileTagRelationMessageData;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -17,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProfileMessageData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ProfileMessageData   {
   private String firstName;
   private String lastName;
@@ -36,6 +38,8 @@ public class ProfileMessageData   {
   private String email;
   private @Valid List<@Valid ProfileTagRelationMessageData> profileTagRelations = new ArrayList<>();
   private Boolean isDeveloper;
+
+    private Boolean deleted;
   private UUID tenantId;
 
   public ProfileMessageData() {
@@ -218,6 +222,7 @@ public class ProfileMessageData   {
   }
 
   /**
+   * UserId UUID of the account profile in portal.
    **/
   public ProfileMessageData userId(UUID userId) {
     this.userId = userId;
@@ -255,6 +260,7 @@ public class ProfileMessageData   {
   }
 
   /**
+   * Id of this profiles account.
    **/
   public ProfileMessageData accountId(UUID accountId) {
     this.accountId = accountId;
@@ -383,6 +389,25 @@ public class ProfileMessageData   {
   }
 
   /**
+   * true if this profile is deleted.
+   **/
+  public ProfileMessageData deleted(Boolean deleted) {
+      this.deleted = deleted;
+      return this;
+  }
+
+    @JsonProperty("deleted")
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    @JsonProperty("deleted")
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    /**
+     * Id of the tenant this profile belongs to.
    **/
   public ProfileMessageData tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -425,14 +450,15 @@ public class ProfileMessageData   {
         Objects.equals(this.status, profileMessageData.status) &&
         Objects.equals(this.salutationId, profileMessageData.salutationId) &&
         Objects.equals(this.email, profileMessageData.email) &&
-        Objects.equals(this.profileTagRelations, profileMessageData.profileTagRelations) &&
-        Objects.equals(this.isDeveloper, profileMessageData.isDeveloper) &&
+        Objects.equals(this.profileTagRelations, profileMessageData.profileTagRelations) && Objects.equals(this.isDeveloper,
+            profileMessageData.isDeveloper) && Objects.equals(this.deleted, profileMessageData.deleted) &&
         Objects.equals(this.tenantId, profileMessageData.tenantId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, phone, fax, department, position, office, locale, id, userId, keycloakId, accountId, status, salutationId, email, profileTagRelations, isDeveloper, tenantId);
+      return Objects.hash(firstName, lastName, phone, fax, department, position, office, locale, id, userId, keycloakId, accountId, status,
+              salutationId, email, profileTagRelations, isDeveloper, deleted, tenantId);
   }
 
   @Override
@@ -457,6 +483,7 @@ public class ProfileMessageData   {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    profileTagRelations: ").append(toIndentedString(profileTagRelations)).append("\n");
     sb.append("    isDeveloper: ").append(toIndentedString(isDeveloper)).append("\n");
+      sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -467,12 +494,8 @@ public class ProfileMessageData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

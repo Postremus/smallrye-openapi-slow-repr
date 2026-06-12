@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
 import org.acme.model.PostCategory;
 import org.acme.model.PostContentData;
 import org.acme.model.PostRecipientData;
@@ -19,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("PostInputData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class PostInputData   {
   private PostCategory category;
   private Boolean isBanner;
@@ -128,6 +130,7 @@ public class PostInputData   {
   }
 
   /**
+   * From which point in time this post should be displayed. Field is in ISO-8601 format without timezone information. Default Timezone is UTC.
    **/
   public PostInputData visibleFrom(Date visibleFrom) {
     this.visibleFrom = visibleFrom;
@@ -146,6 +149,7 @@ public class PostInputData   {
   }
 
   /**
+   * To which point in time this post should be displayed. Field is in ISO-8601 format without timezone information. Default Timezone is UTC.
    **/
   public PostInputData visibleTo(Date visibleTo) {
     this.visibleTo = visibleTo;
@@ -399,12 +403,8 @@ public class PostInputData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

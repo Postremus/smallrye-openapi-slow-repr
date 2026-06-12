@@ -1,23 +1,22 @@
 package org.acme.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import org.acme.model.RightData;
-import org.acme.model.TranslationHolderData;
-import jakarta.validation.constraints.*;
+import java.util.Map;
+import java.util.Objects;
+
 import jakarta.validation.Valid;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-
-
 @JsonTypeName("RightCategoryData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date =
+        "2026-06-12T06:27:49" + ".020268300" + "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class RightCategoryData   {
   private Long id;
   private TranslationHolderData name;
@@ -96,10 +95,40 @@ public class RightCategoryData   {
       this.rights.remove(rightsItem);
     }
 
-    return this;
+      return this;
   }
 
-  @Override
+    /**
+     * Set the additional (undeclared) property with the specified name and value.
+     * Creates the property if it does not already exist, otherwise replaces it.
+     * @param key the name of the property
+     * @param value the value of the property
+     * @return self reference
+     */
+    @JsonAnySetter
+    public RightCategoryData putAdditionalProperty(String key, Object value) {
+        return this;
+    }
+
+    /**
+     * Return the additional (undeclared) properties.
+     * @return the additional (undeclared) properties
+     */
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return null;
+    }
+
+    /**
+     * Return the additional (undeclared) property with the specified name.
+     * @param key the name of the property
+     * @return the additional (undeclared) property with the specified name
+     */
+    public Object getAdditionalProperty(String key) {
+        return null;
+    }
+
+    @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;
@@ -135,12 +164,8 @@ public class RightCategoryData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

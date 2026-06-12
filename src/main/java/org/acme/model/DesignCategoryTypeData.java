@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.DesignGroupTypeData;
 import org.acme.model.TranslationHolderData;
 import jakarta.validation.constraints.*;
@@ -18,11 +19,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("DesignCategoryTypeData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class DesignCategoryTypeData   {
   private UUID id;
   private TranslationHolderData name;
   private Long sortOrder;
+
+    private String key;
   private @Valid List<@Valid DesignGroupTypeData> groupTypes = new ArrayList<>();
 
   public DesignCategoryTypeData() {
@@ -82,7 +86,24 @@ public class DesignCategoryTypeData   {
     this.sortOrder = sortOrder;
   }
 
-  /**
+    /**
+     **/
+    public DesignCategoryTypeData key(String key) {
+        this.key = key;
+        return this;
+    }
+
+    @JsonProperty("key")
+    public String getKey() {
+        return key;
+    }
+
+    @JsonProperty("key")
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    /**
    **/
   public DesignCategoryTypeData groupTypes(List<@Valid DesignGroupTypeData> groupTypes) {
     this.groupTypes = groupTypes;
@@ -127,14 +148,14 @@ public class DesignCategoryTypeData   {
     }
     DesignCategoryTypeData designCategoryTypeData = (DesignCategoryTypeData) o;
     return Objects.equals(this.id, designCategoryTypeData.id) &&
-        Objects.equals(this.name, designCategoryTypeData.name) &&
-        Objects.equals(this.sortOrder, designCategoryTypeData.sortOrder) &&
+        Objects.equals(this.name, designCategoryTypeData.name) && Objects.equals(this.sortOrder, designCategoryTypeData.sortOrder) && Objects.equals(
+            this.key, designCategoryTypeData.key) &&
         Objects.equals(this.groupTypes, designCategoryTypeData.groupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, sortOrder, groupTypes);
+      return Objects.hash(id, name, sortOrder, key, groupTypes);
   }
 
   @Override
@@ -145,6 +166,7 @@ public class DesignCategoryTypeData   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
+      sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    groupTypes: ").append(toIndentedString(groupTypes)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -155,12 +177,8 @@ public class DesignCategoryTypeData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

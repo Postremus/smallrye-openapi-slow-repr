@@ -1,46 +1,49 @@
 package org.acme.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import org.acme.model.Context;
-import org.acme.model.ContextGroupData;
-import jakarta.validation.constraints.*;
+
 import jakarta.validation.Valid;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-
-
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonTypeName("ContextData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date =
+        "2026-06-12T06:27:49" + ".020268300" + "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ContextData   {
   private String id;
   private String name;
-  private String userFirstname;
-  private String userLastname;
+
+    private TranslationHolderData name2;
   private String contextType;
-  private String language;
   private @Valid List<@Valid Context> contextRelations = new ArrayList<>();
-  private @Valid Set<String> userRights = new LinkedHashSet<>();
-  private ContextGroupData group;
-  private Boolean favourite;
-  private Boolean primary;
-  private Date lastAuthorization;
-  private Boolean lastAuthorizedContext;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
+
+    private String locale;
+
+    private @Valid Set<String> rights = new LinkedHashSet<>();
 
   public ContextData() {
   }
 
   /**
+   * The unique identifier of the context. Uniqueness for a context id is only guaranteed for a single SCS. Other SCS might reuse the context id,
+   * or generate new ones. This is intened to be an opaque string, meaning that the format of this string might change without notice.
    **/
   public ContextData id(String id) {
     this.id = id;
@@ -59,6 +62,8 @@ public class ContextData   {
   }
 
   /**
+   * Name of the context. Usually this follows the pattern &#x60;&lt;organization-name&gt;, &lt;city&gt;&#x60;, but can also use different format
+   * depending on SCS. Can also be a value entered by the user. Not translatable, since this is the direct display name.
    **/
   public ContextData name(String name) {
     this.name = name;
@@ -77,42 +82,28 @@ public class ContextData   {
   }
 
   /**
+   * Translatable name of the context. Usually this this is the translation from the profile group, but can also use different format depending on
+   * SCS.
    **/
-  public ContextData userFirstname(String userFirstname) {
-    this.userFirstname = userFirstname;
+  public ContextData name2(TranslationHolderData name2) {
+      this.name2 = name2;
     return this;
   }
 
-  
-  @JsonProperty("userFirstname")
-  public String getUserFirstname() {
-    return userFirstname;
+    @JsonProperty("name2")
+    @Valid
+    public TranslationHolderData getName2() {
+        return name2;
   }
 
-  @JsonProperty("userFirstname")
-  public void setUserFirstname(String userFirstname) {
-    this.userFirstname = userFirstname;
-  }
-
-  /**
-   **/
-  public ContextData userLastname(String userLastname) {
-    this.userLastname = userLastname;
-    return this;
-  }
-
-  
-  @JsonProperty("userLastname")
-  public String getUserLastname() {
-    return userLastname;
-  }
-
-  @JsonProperty("userLastname")
-  public void setUserLastname(String userLastname) {
-    this.userLastname = userLastname;
+    @JsonProperty("name2")
+    public void setName2(TranslationHolderData name2) {
+        this.name2 = name2;
   }
 
   /**
+   * Type of this context. This matches one of the entries in contextRelations[].type. This is usually &#x60;ORGANIZATION&#x60;, but can also be
+   * different depending on SCS.
    **/
   public ContextData contextType(String contextType) {
     this.contextType = contextType;
@@ -128,24 +119,6 @@ public class ContextData   {
   @JsonProperty("contextType")
   public void setContextType(String contextType) {
     this.contextType = contextType;
-  }
-
-  /**
-   **/
-  public ContextData language(String language) {
-    this.language = language;
-    return this;
-  }
-
-  
-  @JsonProperty("language")
-  public String getLanguage() {
-    return language;
-  }
-
-  @JsonProperty("language")
-  public void setLanguage(String language) {
-    this.language = language;
   }
 
   /**
@@ -183,132 +156,141 @@ public class ContextData   {
     return this;
   }
   /**
+   * Firstname of the account this context is for.
    **/
-  public ContextData userRights(Set<String> userRights) {
-    this.userRights = userRights;
+  public ContextData firstName(String firstName) {
+      this.firstName = firstName;
     return this;
   }
 
-  
-  @JsonProperty("userRights")
-  public Set<String> getUserRights() {
-    return userRights;
-  }
-
-  @JsonProperty("userRights")
-  @JsonDeserialize(as = LinkedHashSet.class)
-  public void setUserRights(Set<String> userRights) {
-    this.userRights = userRights;
-  }
-
-  public ContextData addUserRightsItem(String userRightsItem) {
-    if (this.userRights == null) {
-      this.userRights = new LinkedHashSet<>();
+    @JsonProperty("firstName")
+    public String getFirstName() {
+        return firstName;
     }
 
-    this.userRights.add(userRightsItem);
-    return this;
+    @JsonProperty("firstName")
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
   }
 
-  public ContextData removeUserRightsItem(String userRightsItem) {
-    if (userRightsItem != null && this.userRights != null) {
-      this.userRights.remove(userRightsItem);
+    /**
+     * Lastname of the account this context is for.
+     **/
+    public ContextData lastName(String lastName) {
+        this.lastName = lastName;
+        return this;
     }
 
+    @JsonProperty("lastName")
+    public String getLastName() {
+        return lastName;
+    }
+
+    @JsonProperty("lastName")
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * Email of the account this context is for.
+     **/
+    public ContextData email(String email) {
+        this.email = email;
+    return this;
+  }
+
+    @JsonProperty("email")
+    public String getEmail() {
+        return email;
+    }
+
+    @JsonProperty("email")
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Locale of the account this context is for.
+     **/
+    public ContextData locale(String locale) {
+        this.locale = locale;
+    return this;
+  }
+
+    @JsonProperty("locale")
+    public String getLocale() {
+        return locale;
+    }
+
+    @JsonProperty("locale")
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    /**
+     * Rights assigned to this context. Set of strings, guaranteed to not include duplicates.
+   **/
+    public ContextData rights(Set<String> rights) {
+        this.rights = rights;
+    return this;
+  }
+
+    @JsonProperty("rights")
+    public Set<String> getRights() {
+        return rights;
+    }
+
+    @JsonProperty("rights")
+    @JsonDeserialize(as = LinkedHashSet.class)
+    public void setRights(Set<String> rights) {
+        this.rights = rights;
+  }
+
+    public ContextData addRightsItem(String rightsItem) {
+        if (this.rights == null) {
+            this.rights = new LinkedHashSet<>();
+        }
+
+        this.rights.add(rightsItem);
+    return this;
+  }
+
+    public ContextData removeRightsItem(String rightsItem) {
+        if (rightsItem != null && this.rights != null) {
+            this.rights.remove(rightsItem);
+        }
+
     return this;
   }
   /**
-   **/
-  public ContextData group(ContextGroupData group) {
-    this.group = group;
+   * Set the additional (undeclared) property with the specified name and value.
+   * Creates the property if it does not already exist, otherwise replaces it.
+   * @param key the name of the property
+   * @param value the value of the property
+   * @return self reference
+   */
+  @JsonAnySetter
+  public ContextData putAdditionalProperty(String key, Object value) {
     return this;
   }
 
-  
-  @JsonProperty("group")
-  @Valid public ContextGroupData getGroup() {
-    return group;
+    /**
+     * Return the additional (undeclared) properties.
+     * @return the additional (undeclared) properties
+     */
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return null;
   }
 
-  @JsonProperty("group")
-  public void setGroup(ContextGroupData group) {
-    this.group = group;
+    /**
+     * Return the additional (undeclared) property with the specified name.
+     * @param key the name of the property
+     * @return the additional (undeclared) property with the specified name
+     */
+    public Object getAdditionalProperty(String key) {
+        return null;
   }
-
-  /**
-   **/
-  public ContextData favourite(Boolean favourite) {
-    this.favourite = favourite;
-    return this;
-  }
-
-  
-  @JsonProperty("favourite")
-  public Boolean getFavourite() {
-    return favourite;
-  }
-
-  @JsonProperty("favourite")
-  public void setFavourite(Boolean favourite) {
-    this.favourite = favourite;
-  }
-
-  /**
-   * Decides if this is the primary context of this profile. Only one context can be marked as primary.
-   **/
-  public ContextData primary(Boolean primary) {
-    this.primary = primary;
-    return this;
-  }
-
-  
-  @JsonProperty("primary")
-  public Boolean getPrimary() {
-    return primary;
-  }
-
-  @JsonProperty("primary")
-  public void setPrimary(Boolean primary) {
-    this.primary = primary;
-  }
-
-  /**
-   **/
-  public ContextData lastAuthorization(Date lastAuthorization) {
-    this.lastAuthorization = lastAuthorization;
-    return this;
-  }
-
-  
-  @JsonProperty("lastAuthorization")
-  public Date getLastAuthorization() {
-    return lastAuthorization;
-  }
-
-  @JsonProperty("lastAuthorization")
-  public void setLastAuthorization(Date lastAuthorization) {
-    this.lastAuthorization = lastAuthorization;
-  }
-
-  /**
-   * Decides if this is the context that last got authorized for this profile.
-   **/
-  public ContextData lastAuthorizedContext(Boolean lastAuthorizedContext) {
-    this.lastAuthorizedContext = lastAuthorizedContext;
-    return this;
-  }
-
-  
-  @JsonProperty("lastAuthorizedContext")
-  public Boolean getLastAuthorizedContext() {
-    return lastAuthorizedContext;
-  }
-
-  @JsonProperty("lastAuthorizedContext")
-  public void setLastAuthorizedContext(Boolean lastAuthorizedContext) {
-    this.lastAuthorizedContext = lastAuthorizedContext;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -319,24 +301,16 @@ public class ContextData   {
       return false;
     }
     ContextData contextData = (ContextData) o;
-    return Objects.equals(this.id, contextData.id) &&
-        Objects.equals(this.name, contextData.name) &&
-        Objects.equals(this.userFirstname, contextData.userFirstname) &&
-        Objects.equals(this.userLastname, contextData.userLastname) &&
-        Objects.equals(this.contextType, contextData.contextType) &&
-        Objects.equals(this.language, contextData.language) &&
-        Objects.equals(this.contextRelations, contextData.contextRelations) &&
-        Objects.equals(this.userRights, contextData.userRights) &&
-        Objects.equals(this.group, contextData.group) &&
-        Objects.equals(this.favourite, contextData.favourite) &&
-        Objects.equals(this.primary, contextData.primary) &&
-        Objects.equals(this.lastAuthorization, contextData.lastAuthorization) &&
-        Objects.equals(this.lastAuthorizedContext, contextData.lastAuthorizedContext);
+      return Objects.equals(this.id, contextData.id) && Objects.equals(this.name, contextData.name) && Objects.equals(this.name2,
+              contextData.name2) && Objects.equals(this.contextType, contextData.contextType) && Objects.equals(this.contextRelations,
+              contextData.contextRelations) && Objects.equals(this.firstName, contextData.firstName) && Objects.equals(this.lastName,
+              contextData.lastName) && Objects.equals(this.email, contextData.email) && Objects.equals(this.locale,
+              contextData.locale) && Objects.equals(this.rights, contextData.rights);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, userFirstname, userLastname, contextType, language, contextRelations, userRights, group, favourite, primary, lastAuthorization, lastAuthorizedContext);
+      return Objects.hash(id, name, name2, contextType, contextRelations, firstName, lastName, email, locale, rights);
   }
 
   @Override
@@ -346,17 +320,14 @@ public class ContextData   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    userFirstname: ").append(toIndentedString(userFirstname)).append("\n");
-    sb.append("    userLastname: ").append(toIndentedString(userLastname)).append("\n");
+      sb.append("    name2: ").append(toIndentedString(name2)).append("\n");
     sb.append("    contextType: ").append(toIndentedString(contextType)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    contextRelations: ").append(toIndentedString(contextRelations)).append("\n");
-    sb.append("    userRights: ").append(toIndentedString(userRights)).append("\n");
-    sb.append("    group: ").append(toIndentedString(group)).append("\n");
-    sb.append("    favourite: ").append(toIndentedString(favourite)).append("\n");
-    sb.append("    primary: ").append(toIndentedString(primary)).append("\n");
-    sb.append("    lastAuthorization: ").append(toIndentedString(lastAuthorization)).append("\n");
-    sb.append("    lastAuthorizedContext: ").append(toIndentedString(lastAuthorizedContext)).append("\n");
+      sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
+      sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+      sb.append("    email: ").append(toIndentedString(email)).append("\n");
+      sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+      sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -366,12 +337,8 @@ public class ContextData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

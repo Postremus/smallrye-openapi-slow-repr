@@ -13,12 +13,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AccountMessageData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" +
+        ".020268300+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class AccountMessageData   {
   private UUID id;
   private String keycloakId;
   private String email;
   private Long salutationId;
+
+    private UUID salutationUuid;
   private String firstName;
   private String lastName;
   private String locale;
@@ -27,6 +30,7 @@ public class AccountMessageData   {
   }
 
   /**
+   * Id of this account in portal.
    **/
   public AccountMessageData id(UUID id) {
     this.id = id;
@@ -101,7 +105,26 @@ public class AccountMessageData   {
     this.salutationId = salutationId;
   }
 
-  /**
+    /**
+     * Salutation of the profile, like Herr, Frau, etc. Has to be a valid id of a salutation.
+     **/
+    public AccountMessageData salutationUuid(UUID salutationUuid) {
+        this.salutationUuid = salutationUuid;
+        return this;
+    }
+
+    @JsonProperty("salutationUuid")
+    @Pattern(regexp = "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")
+    public UUID getSalutationUuid() {
+        return salutationUuid;
+    }
+
+    @JsonProperty("salutationUuid")
+    public void setSalutationUuid(UUID salutationUuid) {
+        this.salutationUuid = salutationUuid;
+    }
+
+    /**
    **/
   public AccountMessageData firstName(String firstName) {
     this.firstName = firstName;
@@ -169,7 +192,8 @@ public class AccountMessageData   {
     return Objects.equals(this.id, accountMessageData.id) &&
         Objects.equals(this.keycloakId, accountMessageData.keycloakId) &&
         Objects.equals(this.email, accountMessageData.email) &&
-        Objects.equals(this.salutationId, accountMessageData.salutationId) &&
+        Objects.equals(this.salutationId, accountMessageData.salutationId) && Objects.equals(this.salutationUuid,
+            accountMessageData.salutationUuid) &&
         Objects.equals(this.firstName, accountMessageData.firstName) &&
         Objects.equals(this.lastName, accountMessageData.lastName) &&
         Objects.equals(this.locale, accountMessageData.locale);
@@ -177,7 +201,7 @@ public class AccountMessageData   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, keycloakId, email, salutationId, firstName, lastName, locale);
+      return Objects.hash(id, keycloakId, email, salutationId, salutationUuid, firstName, lastName, locale);
   }
 
   @Override
@@ -189,6 +213,7 @@ public class AccountMessageData   {
     sb.append("    keycloakId: ").append(toIndentedString(keycloakId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    salutationId: ").append(toIndentedString(salutationId)).append("\n");
+      sb.append("    salutationUuid: ").append(toIndentedString(salutationUuid)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
@@ -201,12 +226,8 @@ public class AccountMessageData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

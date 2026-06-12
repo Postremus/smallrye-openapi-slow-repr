@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.TenantApplicationGrantData;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -17,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TenantData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class TenantData   {
   private UUID id;
   private String name;
@@ -36,6 +38,16 @@ public class TenantData   {
   private String fax;
   private String email;
   private String website;
+
+    private String jiraId;
+
+    private String salesforceId;
+
+    private String netboxId;
+
+    private String customerAbbreviation;
+
+    private String neoUrlName;
   private Boolean deleted;
   private @Valid List<@Valid TenantApplicationGrantData> accessGrants = new ArrayList<>();
 
@@ -62,6 +74,8 @@ public class TenantData   {
   }
 
   /**
+   * Id of this tenant. This id is optional during creation of the tenant, and will be automatically generated if not specified. Ignored during
+   * updates to the tenant.
    **/
   public TenantData id(UUID id) {
     this.id = id;
@@ -370,7 +384,102 @@ public class TenantData   {
     this.website = website;
   }
 
-  /**
+    /**
+     * Jira identifier of this tenant.
+     **/
+    public TenantData jiraId(String jiraId) {
+        this.jiraId = jiraId;
+        return this;
+    }
+
+    @JsonProperty("jiraId")
+    @Size(max = 255)
+    public String getJiraId() {
+        return jiraId;
+    }
+
+    @JsonProperty("jiraId")
+    public void setJiraId(String jiraId) {
+        this.jiraId = jiraId;
+    }
+
+    /**
+     * Salesforce identifier of this tenant.
+     **/
+    public TenantData salesforceId(String salesforceId) {
+        this.salesforceId = salesforceId;
+        return this;
+    }
+
+    @JsonProperty("salesforceId")
+    @Size(max = 255)
+    public String getSalesforceId() {
+        return salesforceId;
+    }
+
+    @JsonProperty("salesforceId")
+    public void setSalesforceId(String salesforceId) {
+        this.salesforceId = salesforceId;
+    }
+
+    /**
+     * Netbox identifier of this tenant.
+     **/
+    public TenantData netboxId(String netboxId) {
+        this.netboxId = netboxId;
+        return this;
+    }
+
+    @JsonProperty("netboxId")
+    @Size(max = 255)
+    public String getNetboxId() {
+        return netboxId;
+    }
+
+    @JsonProperty("netboxId")
+    public void setNetboxId(String netboxId) {
+        this.netboxId = netboxId;
+    }
+
+    /**
+     * Customer abbreviation of this tenant.
+     **/
+    public TenantData customerAbbreviation(String customerAbbreviation) {
+        this.customerAbbreviation = customerAbbreviation;
+        return this;
+    }
+
+    @JsonProperty("customerAbbreviation")
+    @Size(max = 255)
+    public String getCustomerAbbreviation() {
+        return customerAbbreviation;
+    }
+
+    @JsonProperty("customerAbbreviation")
+    public void setCustomerAbbreviation(String customerAbbreviation) {
+        this.customerAbbreviation = customerAbbreviation;
+    }
+
+    /**
+     * NEO URL name of this tenant.
+     **/
+    public TenantData neoUrlName(String neoUrlName) {
+        this.neoUrlName = neoUrlName;
+        return this;
+    }
+
+    @JsonProperty("neoUrlName")
+    @Size(max = 255)
+    public String getNeoUrlName() {
+        return neoUrlName;
+    }
+
+    @JsonProperty("neoUrlName")
+    public void setNeoUrlName(String neoUrlName) {
+        this.neoUrlName = neoUrlName;
+    }
+
+    /**
    * true if this tenant is deleted.
    **/
   public TenantData deleted(Boolean deleted) {
@@ -449,15 +558,18 @@ public class TenantData   {
         Objects.equals(this.phone, tenantData.phone) &&
         Objects.equals(this.mobile, tenantData.mobile) &&
         Objects.equals(this.fax, tenantData.fax) &&
-        Objects.equals(this.email, tenantData.email) &&
-        Objects.equals(this.website, tenantData.website) &&
+        Objects.equals(this.email, tenantData.email) && Objects.equals(this.website, tenantData.website) && Objects.equals(this.jiraId,
+            tenantData.jiraId) && Objects.equals(this.salesforceId, tenantData.salesforceId) && Objects.equals(this.netboxId,
+            tenantData.netboxId) && Objects.equals(this.customerAbbreviation, tenantData.customerAbbreviation) && Objects.equals(this.neoUrlName,
+            tenantData.neoUrlName) &&
         Objects.equals(this.deleted, tenantData.deleted) &&
         Objects.equals(this.accessGrants, tenantData.accessGrants);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, matchCode, name2, streetAndNumber, appendix, country, zipCode, city, district, zipCodePoBox, poBox, phone, mobile, fax, email, website, deleted, accessGrants);
+      return Objects.hash(id, name, matchCode, name2, streetAndNumber, appendix, country, zipCode, city, district, zipCodePoBox, poBox, phone, mobile,
+              fax, email, website, jiraId, salesforceId, netboxId, customerAbbreviation, neoUrlName, deleted, accessGrants);
   }
 
   @Override
@@ -482,6 +594,11 @@ public class TenantData   {
     sb.append("    fax: ").append(toIndentedString(fax)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    website: ").append(toIndentedString(website)).append("\n");
+      sb.append("    jiraId: ").append(toIndentedString(jiraId)).append("\n");
+      sb.append("    salesforceId: ").append(toIndentedString(salesforceId)).append("\n");
+      sb.append("    netboxId: ").append(toIndentedString(netboxId)).append("\n");
+      sb.append("    customerAbbreviation: ").append(toIndentedString(customerAbbreviation)).append("\n");
+      sb.append("    neoUrlName: ").append(toIndentedString(neoUrlName)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    accessGrants: ").append(toIndentedString(accessGrants)).append("\n");
     sb.append("}");
@@ -493,12 +610,8 @@ public class TenantData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

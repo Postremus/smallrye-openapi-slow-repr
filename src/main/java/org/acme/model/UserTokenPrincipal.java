@@ -1,6 +1,7 @@
 package org.acme.model;
 
 import java.util.Date;
+
 import org.acme.model.UserContext;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -14,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UserTokenPrincipal")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class UserTokenPrincipal   {
   private String name;
   private Date loginTime;
@@ -44,6 +46,7 @@ public class UserTokenPrincipal   {
   }
 
   /**
+   * Login date time in ISO-8601 format with offset to utc. Default Timezone is UTC (Z).
    **/
   public UserTokenPrincipal loginTime(Date loginTime) {
     this.loginTime = loginTime;
@@ -62,6 +65,7 @@ public class UserTokenPrincipal   {
   }
 
   /**
+   * Session expires date time in ISO-8601 format with offset to utc. Default Timezone is UTC (Z).
    **/
   public UserTokenPrincipal sessionExpires(Date sessionExpires) {
     this.sessionExpires = sessionExpires;
@@ -156,12 +160,8 @@ public class UserTokenPrincipal   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

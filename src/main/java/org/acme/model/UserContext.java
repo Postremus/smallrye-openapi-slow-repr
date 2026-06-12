@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.acme.model.Context;
 import org.acme.model.EnabledFeature;
-import org.acme.model.Locale;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
@@ -21,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UserContext")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class UserContext   {
   private String id;
   private String userId;
@@ -29,7 +30,6 @@ public class UserContext   {
   private String lastname;
   private String contextType;
   private String language;
-  private Locale locale;
   private @Valid List<@Valid Context> contextRelations = new ArrayList<>();
   private @Valid Set<String> userRights = new LinkedHashSet<>();
   private @Valid Set<@Valid EnabledFeature> features = new LinkedHashSet<>();
@@ -155,24 +155,6 @@ public class UserContext   {
   @JsonProperty("language")
   public void setLanguage(String language) {
     this.language = language;
-  }
-
-  /**
-   **/
-  public UserContext locale(Locale locale) {
-    this.locale = locale;
-    return this;
-  }
-
-  
-  @JsonProperty("locale")
-  @Valid public Locale getLocale() {
-    return locale;
-  }
-
-  @JsonProperty("locale")
-  public void setLocale(Locale locale) {
-    this.locale = locale;
   }
 
   /**
@@ -495,7 +477,6 @@ public class UserContext   {
         Objects.equals(this.lastname, userContext.lastname) &&
         Objects.equals(this.contextType, userContext.contextType) &&
         Objects.equals(this.language, userContext.language) &&
-        Objects.equals(this.locale, userContext.locale) &&
         Objects.equals(this.contextRelations, userContext.contextRelations) &&
         Objects.equals(this.userRights, userContext.userRights) &&
         Objects.equals(this.features, userContext.features) &&
@@ -514,7 +495,9 @@ public class UserContext   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, firstname, lastname, contextType, language, locale, contextRelations, userRights, features, forwarderCity, userFirstname, userLastname, userNumber, forwarderName, customerName, forwarderNumber, customerNumber, businessRelationNumber, businessRelationName, accountNumber);
+      return Objects.hash(id, userId, firstname, lastname, contextType, language, contextRelations, userRights, features, forwarderCity,
+              userFirstname, userLastname, userNumber, forwarderName, customerName, forwarderNumber, customerNumber, businessRelationNumber,
+              businessRelationName, accountNumber);
   }
 
   @Override
@@ -528,7 +511,6 @@ public class UserContext   {
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("    contextType: ").append(toIndentedString(contextType)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("    contextRelations: ").append(toIndentedString(contextRelations)).append("\n");
     sb.append("    userRights: ").append(toIndentedString(userRights)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
@@ -552,12 +534,8 @@ public class UserContext   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

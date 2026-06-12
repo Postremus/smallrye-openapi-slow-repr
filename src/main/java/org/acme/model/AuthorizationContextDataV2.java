@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.acme.model.Context;
 import org.acme.model.ContextGroupDataV2;
 import jakarta.validation.constraints.*;
@@ -23,7 +24,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 
 @JsonTypeName("AuthorizationContextDataV2")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class AuthorizationContextDataV2   {
   private String id;
   private String name;
@@ -275,6 +277,7 @@ public class AuthorizationContextDataV2   {
   }
 
   /**
+   * Last time this context got authorized.
    **/
   public AuthorizationContextDataV2 lastAuthorization(Date lastAuthorization) {
     this.lastAuthorization = lastAuthorization;
@@ -368,12 +371,8 @@ public class AuthorizationContextDataV2   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

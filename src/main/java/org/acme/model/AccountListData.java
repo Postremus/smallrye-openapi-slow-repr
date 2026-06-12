@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ContextDataV3;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -18,12 +19,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AccountListData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date =
+        "2026-06-12T06:27:49" + ".020268300" + "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class AccountListData   {
   private UUID id;
   private String keycloakId;
   private String email;
   private Long salutationId;
+
+    private UUID salutationUuid;
   private String firstName;
   private String lastName;
   private String locale;
@@ -40,6 +44,7 @@ public class AccountListData   {
   }
 
   /**
+   * Id of this account in portal.
    **/
   public AccountListData id(UUID id) {
     this.id = id;
@@ -114,7 +119,26 @@ public class AccountListData   {
     this.salutationId = salutationId;
   }
 
-  /**
+    /**
+     * Salutation of the account, like Herr, Frau, etc. Has to be a valid id of a salutation.
+     **/
+    public AccountListData salutationUuid(UUID salutationUuid) {
+        this.salutationUuid = salutationUuid;
+        return this;
+    }
+
+    @JsonProperty("salutationUuid")
+    @Pattern(regexp = "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")
+    public UUID getSalutationUuid() {
+        return salutationUuid;
+    }
+
+    @JsonProperty("salutationUuid")
+    public void setSalutationUuid(UUID salutationUuid) {
+        this.salutationUuid = salutationUuid;
+    }
+
+    /**
    **/
   public AccountListData firstName(String firstName) {
     this.firstName = firstName;
@@ -243,6 +267,7 @@ public class AccountListData   {
   }
 
   /**
+   * Last time this context got authorized. May be empty if the user never logged in. Date time in ISO-8601 format without timezone information.
    **/
   public AccountListData lastLogin(Date lastLogin) {
     this.lastLogin = lastLogin;
@@ -379,9 +404,8 @@ public class AccountListData   {
     }
     AccountListData accountListData = (AccountListData) o;
     return Objects.equals(this.id, accountListData.id) &&
-        Objects.equals(this.keycloakId, accountListData.keycloakId) &&
-        Objects.equals(this.email, accountListData.email) &&
-        Objects.equals(this.salutationId, accountListData.salutationId) &&
+        Objects.equals(this.keycloakId, accountListData.keycloakId) && Objects.equals(this.email, accountListData.email) && Objects.equals(
+            this.salutationId, accountListData.salutationId) && Objects.equals(this.salutationUuid, accountListData.salutationUuid) &&
         Objects.equals(this.firstName, accountListData.firstName) &&
         Objects.equals(this.lastName, accountListData.lastName) &&
         Objects.equals(this.locale, accountListData.locale) &&
@@ -397,7 +421,8 @@ public class AccountListData   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, keycloakId, email, salutationId, firstName, lastName, locale, isTechnical, tenantIds, status, lastLogin, contexts, tagIds, isServiceProvider, deleted);
+      return Objects.hash(id, keycloakId, email, salutationId, salutationUuid, firstName, lastName, locale, isTechnical, tenantIds, status, lastLogin,
+              contexts, tagIds, isServiceProvider, deleted);
   }
 
   @Override
@@ -409,6 +434,7 @@ public class AccountListData   {
     sb.append("    keycloakId: ").append(toIndentedString(keycloakId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    salutationId: ").append(toIndentedString(salutationId)).append("\n");
+      sb.append("    salutationUuid: ").append(toIndentedString(salutationUuid)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
@@ -429,12 +455,8 @@ public class AccountListData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

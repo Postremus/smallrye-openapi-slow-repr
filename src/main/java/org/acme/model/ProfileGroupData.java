@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ProfileGroupApplicationGrantData;
 import org.acme.model.ProfileGroupRightData;
 import org.acme.model.TranslationHolderData;
@@ -19,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProfileGroupData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ProfileGroupData   {
   private UUID id;
   private String matchCode;
@@ -33,7 +35,13 @@ public class ProfileGroupData   {
   public ProfileGroupData() {
   }
 
-  /**
+    @JsonCreator
+    public ProfileGroupData(@JsonProperty(required = true, value = "matchCode") String matchCode) {
+        this.matchCode = matchCode;
+    }
+
+    /**
+     * Id of this account profile group.
    **/
   public ProfileGroupData id(UUID id) {
     this.id = id;
@@ -59,13 +67,15 @@ public class ProfileGroupData   {
     return this;
   }
 
-  
-  @JsonProperty("matchCode")
-   @Pattern(regexp="[A-Z0-9]*") @Size(max=100)public String getMatchCode() {
+    @JsonProperty(required = true, value = "matchCode")
+    @NotNull
+    @Pattern(regexp = "[A-Z0-9]*")
+    @Size(max = 100)
+    public String getMatchCode() {
     return matchCode;
   }
 
-  @JsonProperty("matchCode")
+    @JsonProperty(required = true, value = "matchCode")
   public void setMatchCode(String matchCode) {
     this.matchCode = matchCode;
   }
@@ -109,6 +119,7 @@ public class ProfileGroupData   {
   }
 
   /**
+   * Id of the tenant this account profile group belongs to.
    **/
   public ProfileGroupData tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -260,12 +271,8 @@ public class ProfileGroupData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

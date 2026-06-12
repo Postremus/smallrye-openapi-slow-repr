@@ -3,8 +3,9 @@ package org.acme.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.acme.model.PaginationListMetaData;
-import org.acme.model.ProfileData;
+import org.acme.model.ProductData;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
@@ -14,20 +15,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-
-
-@JsonTypeName("PaginationListProfileData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
-public class PaginationListProfileData   {
+@JsonTypeName("PaginationListProductData")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
+public class PaginationListProductData {
   private PaginationListMetaData meta;
-  private @Valid List<@Valid ProfileData> items = new ArrayList<>();
 
-  public PaginationListProfileData() {
+    private @Valid List<@Valid ProductData> items = new ArrayList<>();
+
+    public PaginationListProductData() {
   }
 
   /**
    **/
-  public PaginationListProfileData meta(PaginationListMetaData meta) {
+  public PaginationListProductData meta(PaginationListMetaData meta) {
     this.meta = meta;
     return this;
   }
@@ -44,25 +45,26 @@ public class PaginationListProfileData   {
   }
 
   /**
-   * List of items of the PaginationList
+   * List of items of the PaginationList. May be null if no items are available.
    **/
-  public PaginationListProfileData items(List<@Valid ProfileData> items) {
+  public PaginationListProductData items(List<@Valid ProductData> items) {
     this.items = items;
     return this;
   }
 
   
   @JsonProperty("items")
-  @Valid public List<@Valid ProfileData> getItems() {
+  @Valid
+  public List<@Valid ProductData> getItems() {
     return items;
   }
 
   @JsonProperty("items")
-  public void setItems(List<@Valid ProfileData> items) {
+  public void setItems(List<@Valid ProductData> items) {
     this.items = items;
   }
 
-  public PaginationListProfileData addItemsItem(ProfileData itemsItem) {
+    public PaginationListProductData addItemsItem(ProductData itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -71,7 +73,7 @@ public class PaginationListProfileData   {
     return this;
   }
 
-  public PaginationListProfileData removeItemsItem(ProfileData itemsItem) {
+    public PaginationListProductData removeItemsItem(ProductData itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }
@@ -87,9 +89,8 @@ public class PaginationListProfileData   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaginationListProfileData paginationListProfileData = (PaginationListProfileData) o;
-    return Objects.equals(this.meta, paginationListProfileData.meta) &&
-        Objects.equals(this.items, paginationListProfileData.items);
+      PaginationListProductData paginationListProductData = (PaginationListProductData) o;
+      return Objects.equals(this.meta, paginationListProductData.meta) && Objects.equals(this.items, paginationListProductData.items);
   }
 
   @Override
@@ -100,7 +101,7 @@ public class PaginationListProfileData   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaginationListProfileData {\n");
+      sb.append("class PaginationListProductData {\n");
     
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
@@ -113,12 +114,8 @@ public class PaginationListProfileData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

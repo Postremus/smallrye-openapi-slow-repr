@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ContextDataV2;
 import org.acme.model.ProfileTagRelationDataV2;
 import jakarta.validation.constraints.*;
@@ -19,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProfileDataV2")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ProfileDataV2   {
   private String firstName;
   private String lastName;
@@ -207,6 +209,7 @@ public class ProfileDataV2   {
   }
 
   /**
+   * Id of the profile in portal.
    **/
   public ProfileDataV2 id(UUID id) {
     this.id = id;
@@ -244,6 +247,7 @@ public class ProfileDataV2   {
   }
 
   /**
+   * Id of this profiles account.
    **/
   public ProfileDataV2 accountId(UUID accountId) {
     this.accountId = accountId;
@@ -319,6 +323,7 @@ public class ProfileDataV2   {
   }
 
   /**
+   * Creation date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public ProfileDataV2 createDateTime(Date createDateTime) {
     this.createDateTime = createDateTime;
@@ -337,6 +342,7 @@ public class ProfileDataV2   {
   }
 
   /**
+   * Last Update date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public ProfileDataV2 lastUpdateDateTime(Date lastUpdateDateTime) {
     this.lastUpdateDateTime = lastUpdateDateTime;
@@ -355,6 +361,7 @@ public class ProfileDataV2   {
   }
 
   /**
+   * Last time this context got authorized. May be empty if the user never logged in. Date time in ISO-8601 format without timezone information.
    **/
   public ProfileDataV2 lastLogin(Date lastLogin) {
     this.lastLogin = lastLogin;
@@ -480,6 +487,7 @@ public class ProfileDataV2   {
   }
 
   /**
+   * Id of the tenant this profile belongs to.
    **/
   public ProfileDataV2 tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -613,12 +621,8 @@ public class ProfileDataV2   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

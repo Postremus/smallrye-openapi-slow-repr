@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.TranslationHolderData;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -17,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ApplicationDataV3")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ApplicationDataV3   {
   private Long id;
   private UUID uuid;
@@ -34,7 +36,9 @@ public class ApplicationDataV3   {
   private @Valid List<Long> applicationGroupIds = new ArrayList<>();
   private Long parentApplicationId;
 
-  public ApplicationDataV3() {
+    private UUID productId;
+
+    public ApplicationDataV3() {
   }
 
   @JsonCreator
@@ -64,6 +68,7 @@ public class ApplicationDataV3   {
   }
 
   /**
+   * UUIDv4 which identifies this application in external systems.
    **/
   public ApplicationDataV3 uuid(UUID uuid) {
     this.uuid = uuid;
@@ -341,8 +346,27 @@ public class ApplicationDataV3   {
     this.parentApplicationId = parentApplicationId;
   }
 
+    /**
+     * Product of the application. Has to be a valid id of a product. Can be left empty, in which case the product is automatically set to &#x60;
+     * unknown&#x60;.
+     **/
+    public ApplicationDataV3 productId(UUID productId) {
+        this.productId = productId;
+        return this;
+    }
 
-  @Override
+    @JsonProperty("productId")
+    @Pattern(regexp = "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")
+    public UUID getProductId() {
+        return productId;
+    }
+
+    @JsonProperty("productId")
+    public void setProductId(UUID productId) {
+        this.productId = productId;
+    }
+
+    @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;
@@ -362,14 +386,15 @@ public class ApplicationDataV3   {
         Objects.equals(this.endpointOrganization, applicationDataV3.endpointOrganization) &&
         Objects.equals(this.endpointOrganizationUUID, applicationDataV3.endpointOrganizationUUID) &&
         Objects.equals(this.enableUserScheduler, applicationDataV3.enableUserScheduler) &&
-        Objects.equals(this.enableOrganizationScheduler, applicationDataV3.enableOrganizationScheduler) &&
-        Objects.equals(this.applicationGroupIds, applicationDataV3.applicationGroupIds) &&
-        Objects.equals(this.parentApplicationId, applicationDataV3.parentApplicationId);
+        Objects.equals(this.enableOrganizationScheduler, applicationDataV3.enableOrganizationScheduler) && Objects.equals(this.applicationGroupIds,
+            applicationDataV3.applicationGroupIds) && Objects.equals(this.parentApplicationId,
+            applicationDataV3.parentApplicationId) && Objects.equals(this.productId, applicationDataV3.productId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, uuid, name, category, description, features, url, endpointUser, endpointOrganization, endpointOrganizationUUID, enableUserScheduler, enableOrganizationScheduler, applicationGroupIds, parentApplicationId);
+      return Objects.hash(id, uuid, name, category, description, features, url, endpointUser, endpointOrganization, endpointOrganizationUUID,
+              enableUserScheduler, enableOrganizationScheduler, applicationGroupIds, parentApplicationId, productId);
   }
 
   @Override
@@ -391,6 +416,7 @@ public class ApplicationDataV3   {
     sb.append("    enableOrganizationScheduler: ").append(toIndentedString(enableOrganizationScheduler)).append("\n");
     sb.append("    applicationGroupIds: ").append(toIndentedString(applicationGroupIds)).append("\n");
     sb.append("    parentApplicationId: ").append(toIndentedString(parentApplicationId)).append("\n");
+      sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -400,12 +426,8 @@ public class ApplicationDataV3   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

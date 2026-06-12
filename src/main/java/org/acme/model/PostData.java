@@ -1,25 +1,25 @@
 package org.acme.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import org.acme.model.PostCategory;
-import org.acme.model.PostContentData;
-import org.acme.model.PostRecipientData;
-import jakarta.validation.constraints.*;
-import jakarta.validation.Valid;
-
+import java.util.Map;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-
-
 @JsonTypeName("PostData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date =
+        "2026-06-12T06:27:49" + ".020268300" + "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class PostData   {
   private Long id;
   private PostCategory category;
@@ -149,6 +149,7 @@ public class PostData   {
   }
 
   /**
+   * From which point in time this post should be displayed. Field is in ISO-8601 format without timezone information. Default Timezone is UTC.
    **/
   public PostData visibleFrom(Date visibleFrom) {
     this.visibleFrom = visibleFrom;
@@ -167,6 +168,7 @@ public class PostData   {
   }
 
   /**
+   * To which point in time this post should be displayed. Field is in ISO-8601 format without timezone information. Default Timezone is UTC.
    **/
   public PostData visibleTo(Date visibleTo) {
     this.visibleTo = visibleTo;
@@ -242,6 +244,7 @@ public class PostData   {
   }
 
   /**
+   * Creation date time in ISO-8601 format without timezone information. Default Timezone is UTC.
    **/
   public PostData createDateTime(Date createDateTime) {
     this.createDateTime = createDateTime;
@@ -260,6 +263,7 @@ public class PostData   {
   }
 
   /**
+   * Last Update date time in ISO-8601 format without timezone information. Default Timezone is UTC.
    **/
   public PostData lastUpdateDateTime(Date lastUpdateDateTime) {
     this.lastUpdateDateTime = lastUpdateDateTime;
@@ -494,6 +498,35 @@ public class PostData   {
     this.deleted = deleted;
   }
 
+    /**
+     * Set the additional (undeclared) property with the specified name and value.
+     * Creates the property if it does not already exist, otherwise replaces it.
+     * @param key the name of the property
+     * @param value the value of the property
+     * @return self reference
+     */
+    @JsonAnySetter
+    public PostData putAdditionalProperty(String key, Object value) {
+        return this;
+    }
+
+    /**
+     * Return the additional (undeclared) properties.
+     * @return the additional (undeclared) properties
+     */
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return null;
+    }
+
+    /**
+     * Return the additional (undeclared) property with the specified name.
+     * @param key the name of the property
+     * @return the additional (undeclared) property with the specified name
+     */
+    public Object getAdditionalProperty(String key) {
+        return null;
+    }
 
   @Override
   public boolean equals(Object o) {
@@ -567,12 +600,8 @@ public class PostData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -1,5 +1,7 @@
 package org.acme.model;
 
+import java.util.UUID;
+
 import org.acme.model.ServiceLinkTargetType;
 import org.acme.model.TranslationHolderData;
 import jakarta.validation.constraints.*;
@@ -14,9 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ServiceLinkData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ServiceLinkData   {
-  private Long id;
+
+    private UUID id;
   private TranslationHolderData translation;
   private ServiceLinkTargetType targetType;
   private String iconClass;
@@ -29,19 +33,20 @@ public class ServiceLinkData   {
 
   /**
    **/
-  public ServiceLinkData id(Long id) {
+  public ServiceLinkData id(UUID id) {
     this.id = id;
     return this;
   }
 
   
   @JsonProperty("id")
-  public Long getId() {
+  @Pattern(regexp = "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")
+  public UUID getId() {
     return id;
   }
 
   @JsonProperty("id")
-  public void setId(Long id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 
@@ -198,12 +203,8 @@ public class ServiceLinkData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

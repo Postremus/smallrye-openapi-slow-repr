@@ -1,18 +1,18 @@
 package org.acme.model;
 
-import jakarta.validation.constraints.*;
-import jakarta.validation.Valid;
-
+import java.util.Map;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-
-
 @JsonTypeName("PaginationListMetaData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class PaginationListMetaData   {
   private Integer currentPage;
   private Integer pageCount;
@@ -25,6 +25,7 @@ public class PaginationListMetaData   {
   }
 
   /**
+   * Current page number. First page is 1. If no items are found, this value is 0. Never negative.
    **/
   public PaginationListMetaData currentPage(Integer currentPage) {
     this.currentPage = currentPage;
@@ -43,6 +44,8 @@ public class PaginationListMetaData   {
   }
 
   /**
+   * Total number of pages available. If no items are found, this value is 0. Never negative. Can be calculated using the formula: &#x60;
+   * (totalCount / pageSize) + ((totalCount % pageSize) &gt; 0 ? 1 : 0&#x60;
    **/
   public PaginationListMetaData pageCount(Integer pageCount) {
     this.pageCount = pageCount;
@@ -61,6 +64,9 @@ public class PaginationListMetaData   {
   }
 
   /**
+   * Number of items per page. If no items are found, this value is 0. Never negative. Will either: * Match the amount of items on the page if the
+   * requested page contains enough elements * or be 0 if the requested page contains no elements.  The client can indicate with the &#39;
+   * pageSize&#39; parameter the upper bound (inclusive) for the requested pageSize.
    **/
   public PaginationListMetaData pageSize(Integer pageSize) {
     this.pageSize = pageSize;
@@ -79,6 +85,7 @@ public class PaginationListMetaData   {
   }
 
   /**
+   * Total number of items available over all pages. If no items are found, this value is 0. Never negative.
    **/
   public PaginationListMetaData totalCount(Long totalCount) {
     this.totalCount = totalCount;
@@ -97,6 +104,7 @@ public class PaginationListMetaData   {
   }
 
   /**
+   * Used sort attribute. The client can indicate the requested sort order using the &#39;sortAttribute&#39; parameter.
    **/
   public PaginationListMetaData sortAttribute(String sortAttribute) {
     this.sortAttribute = sortAttribute;
@@ -115,6 +123,7 @@ public class PaginationListMetaData   {
   }
 
   /**
+   * Indicates if the sorting of the result is ascending (true) or descending (false).
    **/
   public PaginationListMetaData sortAscending(Boolean sortAscending) {
     this.sortAscending = sortAscending;
@@ -132,6 +141,35 @@ public class PaginationListMetaData   {
     this.sortAscending = sortAscending;
   }
 
+    /**
+     * Set the additional (undeclared) property with the specified name and value.
+     * Creates the property if it does not already exist, otherwise replaces it.
+     * @param key the name of the property
+     * @param value the value of the property
+     * @return self reference
+     */
+    @JsonAnySetter
+    public PaginationListMetaData putAdditionalProperty(String key, Object value) {
+        return this;
+    }
+
+    /**
+     * Return the additional (undeclared) properties.
+     * @return the additional (undeclared) properties
+     */
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return null;
+    }
+
+    /**
+     * Return the additional (undeclared) property with the specified name.
+     * @param key the name of the property
+     * @return the additional (undeclared) property with the specified name
+     */
+    public Object getAdditionalProperty(String key) {
+        return null;
+    }
 
   @Override
   public boolean equals(Object o) {
@@ -175,12 +213,8 @@ public class PaginationListMetaData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

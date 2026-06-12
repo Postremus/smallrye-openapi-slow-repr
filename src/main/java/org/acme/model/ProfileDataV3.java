@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import org.acme.model.AdapterProfileDataV3;
 import org.acme.model.ContextDataV3;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -18,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProfileDataV3")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ProfileDataV3   {
   private String firstName;
   private String lastName;
@@ -45,7 +48,11 @@ public class ProfileDataV3   {
   private Boolean hasSystemAdministratorContext;
   private Boolean deleted;
 
-  public ProfileDataV3() {
+    private Boolean isTechnical;
+
+    private @Valid List<@Valid AdapterProfileDataV3> userAdapterRelations = new ArrayList<>();
+
+    public ProfileDataV3() {
   }
 
   @JsonCreator
@@ -206,6 +213,7 @@ public class ProfileDataV3   {
   }
 
   /**
+   * Id of the profile in portal.
    **/
   public ProfileDataV3 id(UUID id) {
     this.id = id;
@@ -243,6 +251,7 @@ public class ProfileDataV3   {
   }
 
   /**
+   * Id of this profiles account.
    **/
   public ProfileDataV3 accountId(UUID accountId) {
     this.accountId = accountId;
@@ -318,6 +327,7 @@ public class ProfileDataV3   {
   }
 
   /**
+   * Creation date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public ProfileDataV3 createDateTime(Date createDateTime) {
     this.createDateTime = createDateTime;
@@ -336,6 +346,7 @@ public class ProfileDataV3   {
   }
 
   /**
+   * Last Update date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public ProfileDataV3 lastUpdateDateTime(Date lastUpdateDateTime) {
     this.lastUpdateDateTime = lastUpdateDateTime;
@@ -354,6 +365,7 @@ public class ProfileDataV3   {
   }
 
   /**
+   * Last time this context got authorized. May be empty if the user never logged in. Date time in ISO-8601 format without timezone information.
    **/
   public ProfileDataV3 lastLogin(Date lastLogin) {
     this.lastLogin = lastLogin;
@@ -480,6 +492,7 @@ public class ProfileDataV3   {
   }
 
   /**
+   * Id of the tenant this profile belongs to.
    **/
   public ProfileDataV3 tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -534,6 +547,61 @@ public class ProfileDataV3   {
     this.deleted = deleted;
   }
 
+    /**
+     * Describes if this profiles account is a technical user. These accounts are intended for machine to machine communications. Technical
+     * accounts are controlled by the &#x60;portal_user_manage_technical_users&#x60; right, which allows: * Deletion and modification of technical
+     * accounts and their profiles. * Initially creating technical accounts  By default, technical users are not visible in the user management list.
+     **/
+    public ProfileDataV3 isTechnical(Boolean isTechnical) {
+        this.isTechnical = isTechnical;
+        return this;
+    }
+
+    @JsonProperty("isTechnical")
+    public Boolean getIsTechnical() {
+        return isTechnical;
+    }
+
+    @JsonProperty("isTechnical")
+    public void setIsTechnical(Boolean isTechnical) {
+        this.isTechnical = isTechnical;
+    }
+
+    /**
+     * External connections of this profile. Contains the automatically and manually created contexts in external applications.
+     **/
+    public ProfileDataV3 userAdapterRelations(List<@Valid AdapterProfileDataV3> userAdapterRelations) {
+        this.userAdapterRelations = userAdapterRelations;
+        return this;
+    }
+
+    @JsonProperty("userAdapterRelations")
+    @Valid
+    public List<@Valid AdapterProfileDataV3> getUserAdapterRelations() {
+        return userAdapterRelations;
+    }
+
+    @JsonProperty("userAdapterRelations")
+    public void setUserAdapterRelations(List<@Valid AdapterProfileDataV3> userAdapterRelations) {
+        this.userAdapterRelations = userAdapterRelations;
+    }
+
+    public ProfileDataV3 addUserAdapterRelationsItem(AdapterProfileDataV3 userAdapterRelationsItem) {
+        if (this.userAdapterRelations == null) {
+            this.userAdapterRelations = new ArrayList<>();
+        }
+
+        this.userAdapterRelations.add(userAdapterRelationsItem);
+        return this;
+    }
+
+    public ProfileDataV3 removeUserAdapterRelationsItem(AdapterProfileDataV3 userAdapterRelationsItem) {
+        if (userAdapterRelationsItem != null && this.userAdapterRelations != null) {
+            this.userAdapterRelations.remove(userAdapterRelationsItem);
+        }
+
+        return this;
+    }
 
   @Override
   public boolean equals(Object o) {
@@ -565,14 +633,16 @@ public class ProfileDataV3   {
         Objects.equals(this.tagIds, profileDataV3.tagIds) &&
         Objects.equals(this.isDeveloper, profileDataV3.isDeveloper) &&
         Objects.equals(this.isServiceProvider, profileDataV3.isServiceProvider) &&
-        Objects.equals(this.tenantId, profileDataV3.tenantId) &&
-        Objects.equals(this.hasSystemAdministratorContext, profileDataV3.hasSystemAdministratorContext) &&
-        Objects.equals(this.deleted, profileDataV3.deleted);
+        Objects.equals(this.tenantId, profileDataV3.tenantId) && Objects.equals(this.hasSystemAdministratorContext,
+            profileDataV3.hasSystemAdministratorContext) && Objects.equals(this.deleted, profileDataV3.deleted) && Objects.equals(this.isTechnical,
+            profileDataV3.isTechnical) && Objects.equals(this.userAdapterRelations, profileDataV3.userAdapterRelations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, phone, fax, department, position, office, locale, id, keycloakId, accountId, status, salutationId, email, createDateTime, lastUpdateDateTime, lastLogin, contexts, tagIds, isDeveloper, isServiceProvider, tenantId, hasSystemAdministratorContext, deleted);
+      return Objects.hash(firstName, lastName, phone, fax, department, position, office, locale, id, keycloakId, accountId, status, salutationId,
+              email, createDateTime, lastUpdateDateTime, lastLogin, contexts, tagIds, isDeveloper, isServiceProvider, tenantId,
+              hasSystemAdministratorContext, deleted, isTechnical, userAdapterRelations);
   }
 
   @Override
@@ -604,6 +674,8 @@ public class ProfileDataV3   {
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    hasSystemAdministratorContext: ").append(toIndentedString(hasSystemAdministratorContext)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
+      sb.append("    isTechnical: ").append(toIndentedString(isTechnical)).append("\n");
+      sb.append("    userAdapterRelations: ").append(toIndentedString(userAdapterRelations)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -613,12 +685,8 @@ public class ProfileDataV3   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

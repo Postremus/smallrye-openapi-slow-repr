@@ -14,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 
 @JsonTypeName("TokenData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" +
+        ".020268300+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class TokenData   {
   private String token;
   private Integer expiresIn;
@@ -44,7 +45,9 @@ public class TokenData   {
   }
 
   /**
-   * In how many seconds the token will expire since retrieval from the authorization server. After this time expires, requests with this token     will fail, and most likely result in a 401/403 from the application backend. The client should therefore add a bit of leeway for its refresh logic, like minus 30s, to ensure the token is not expired before calling the application backend.
+   * In how many seconds the token will expire since retrieval from the authorization server. After this time expires, requests with this token
+   * will fail, and most likely result in a 401/403 from the application backend. The client should therefore add a bit of leeway for its refresh
+   * logic, like subtract 30 seconds, to ensure the token is not expired before calling the application backend.
    **/
   public TokenData expiresIn(Integer expiresIn) {
     this.expiresIn = expiresIn;
@@ -82,7 +85,9 @@ public class TokenData   {
   }
 
   /**
-   * In how many seconds the sessionToken will expire since retrieval from the resource server. After this time expires, requests with this token will fail, and most likely result in a 401/403 from the application backend. The client should therefore add a bit of leeway for its refresh logic, like minus 30s, to ensure the token is not expired before calling the application backend.
+   * In how many seconds the sessionToken will expire since retrieval from the resource server. After this time expires, requests with this token
+   * will fail, and most likely result in a 401/403 from the application backend. The client should therefore add a bit of leeway for its refresh
+   * logic, like subtract 30 seconds, to ensure the token is not expired before calling the application backend.
    **/
   public TokenData sessionTokenExpiresIn(Integer sessionTokenExpiresIn) {
     this.sessionTokenExpiresIn = sessionTokenExpiresIn;
@@ -139,12 +144,8 @@ public class TokenData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

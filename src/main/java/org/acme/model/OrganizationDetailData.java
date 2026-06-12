@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ExternalOrganizationData;
 import org.acme.model.OrganizationApplicationGrantData;
 import org.acme.model.OrganizationType;
@@ -20,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OrganizationDetailData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class OrganizationDetailData   {
   private UUID id;
   private UUID uuid;
@@ -59,8 +61,8 @@ public class OrganizationDetailData   {
   }
 
   @JsonCreator
-  public OrganizationDetailData(
-    @JsonProperty(required = true, value = "name") String name,
+  public OrganizationDetailData(@JsonProperty(required = true, value = "name") String name,
+          @JsonProperty(required = true, value = "matchCode") String matchCode,
     @JsonProperty(required = true, value = "streetAndNumber") String streetAndNumber,
     @JsonProperty(required = true, value = "country") String country,
     @JsonProperty(required = true, value = "zipCode") String zipCode,
@@ -68,6 +70,7 @@ public class OrganizationDetailData   {
     @JsonProperty(required = true, value = "email") String email
   ) {
     this.name = name;
+      this.matchCode = matchCode;
     this.streetAndNumber = streetAndNumber;
     this.country = country;
     this.zipCode = zipCode;
@@ -76,6 +79,7 @@ public class OrganizationDetailData   {
   }
 
   /**
+   * Id of this organization.
    **/
   public OrganizationDetailData id(UUID id) {
     this.id = id;
@@ -94,6 +98,7 @@ public class OrganizationDetailData   {
   }
 
   /**
+   * UUIDv4 which identifies this organization in external systems.
    **/
   public OrganizationDetailData uuid(UUID uuid) {
     this.uuid = uuid;
@@ -201,6 +206,7 @@ public class OrganizationDetailData   {
     return this;
   }
   /**
+   * Creation date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public OrganizationDetailData createDateTime(Date createDateTime) {
     this.createDateTime = createDateTime;
@@ -237,6 +243,7 @@ public class OrganizationDetailData   {
   }
 
   /**
+   * Last Update date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public OrganizationDetailData lastUpdateDateTime(Date lastUpdateDateTime) {
     this.lastUpdateDateTime = lastUpdateDateTime;
@@ -298,13 +305,15 @@ public class OrganizationDetailData   {
     return this;
   }
 
-  
-  @JsonProperty("matchCode")
-   @Pattern(regexp="[A-Z0-9]*") @Size(max=100)public String getMatchCode() {
+    @JsonProperty(required = true, value = "matchCode")
+    @NotNull
+    @Pattern(regexp = "[A-Z0-9]*")
+    @Size(max = 100)
+    public String getMatchCode() {
     return matchCode;
   }
 
-  @JsonProperty("matchCode")
+    @JsonProperty(required = true, value = "matchCode")
   public void setMatchCode(String matchCode) {
     this.matchCode = matchCode;
   }
@@ -582,6 +591,7 @@ public class OrganizationDetailData   {
   }
 
   /**
+   * Id of the tenant this account profile group belongs to.
    **/
   public OrganizationDetailData tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -600,6 +610,7 @@ public class OrganizationDetailData   {
   }
 
   /**
+   * Id of the direct organization parent. Might be null if this is an organization directly below the tenant.
    **/
   public OrganizationDetailData parentId(UUID parentId) {
     this.parentId = parentId;
@@ -674,6 +685,7 @@ public class OrganizationDetailData   {
   }
 
   /**
+   * Design profile id, if organization has dedicated profile.
    **/
   public OrganizationDetailData designProfileId(UUID designProfileId) {
     this.designProfileId = designProfileId;
@@ -786,12 +798,8 @@ public class OrganizationDetailData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

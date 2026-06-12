@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.TenantApplicationGrantData;
 import org.acme.model.TenantProfileInputData;
 import jakarta.validation.constraints.*;
@@ -18,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TenantCreateInputData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class TenantCreateInputData   {
   private UUID id;
   private String name;
@@ -37,6 +39,16 @@ public class TenantCreateInputData   {
   private String fax;
   private String email;
   private String website;
+
+    private String jiraId;
+
+    private String salesforceId;
+
+    private String netboxId;
+
+    private String customerAbbreviation;
+
+    private String neoUrlName;
   private Boolean deleted;
   private @Valid List<@Valid TenantApplicationGrantData> accessGrants = new ArrayList<>();
   private TenantProfileInputData profile;
@@ -66,6 +78,8 @@ public class TenantCreateInputData   {
   }
 
   /**
+   * Id of this tenant. This id is optional during creation of the tenant, and will be automatically generated if not specified. Ignored during
+   * updates to the tenant.
    **/
   public TenantCreateInputData id(UUID id) {
     this.id = id;
@@ -374,7 +388,102 @@ public class TenantCreateInputData   {
     this.website = website;
   }
 
-  /**
+    /**
+     * Jira identifier of this tenant.
+     **/
+    public TenantCreateInputData jiraId(String jiraId) {
+        this.jiraId = jiraId;
+        return this;
+    }
+
+    @JsonProperty("jiraId")
+    @Size(max = 255)
+    public String getJiraId() {
+        return jiraId;
+    }
+
+    @JsonProperty("jiraId")
+    public void setJiraId(String jiraId) {
+        this.jiraId = jiraId;
+    }
+
+    /**
+     * Salesforce identifier of this tenant.
+     **/
+    public TenantCreateInputData salesforceId(String salesforceId) {
+        this.salesforceId = salesforceId;
+        return this;
+    }
+
+    @JsonProperty("salesforceId")
+    @Size(max = 255)
+    public String getSalesforceId() {
+        return salesforceId;
+    }
+
+    @JsonProperty("salesforceId")
+    public void setSalesforceId(String salesforceId) {
+        this.salesforceId = salesforceId;
+    }
+
+    /**
+     * Netbox identifier of this tenant.
+     **/
+    public TenantCreateInputData netboxId(String netboxId) {
+        this.netboxId = netboxId;
+        return this;
+    }
+
+    @JsonProperty("netboxId")
+    @Size(max = 255)
+    public String getNetboxId() {
+        return netboxId;
+    }
+
+    @JsonProperty("netboxId")
+    public void setNetboxId(String netboxId) {
+        this.netboxId = netboxId;
+    }
+
+    /**
+     * Customer abbreviation of this tenant.
+     **/
+    public TenantCreateInputData customerAbbreviation(String customerAbbreviation) {
+        this.customerAbbreviation = customerAbbreviation;
+        return this;
+    }
+
+    @JsonProperty("customerAbbreviation")
+    @Size(max = 255)
+    public String getCustomerAbbreviation() {
+        return customerAbbreviation;
+    }
+
+    @JsonProperty("customerAbbreviation")
+    public void setCustomerAbbreviation(String customerAbbreviation) {
+        this.customerAbbreviation = customerAbbreviation;
+    }
+
+    /**
+     * NEO URL name of this tenant.
+     **/
+    public TenantCreateInputData neoUrlName(String neoUrlName) {
+        this.neoUrlName = neoUrlName;
+        return this;
+    }
+
+    @JsonProperty("neoUrlName")
+    @Size(max = 255)
+    public String getNeoUrlName() {
+        return neoUrlName;
+    }
+
+    @JsonProperty("neoUrlName")
+    public void setNeoUrlName(String neoUrlName) {
+        this.neoUrlName = neoUrlName;
+    }
+
+    /**
    * true if this tenant is deleted.
    **/
   public TenantCreateInputData deleted(Boolean deleted) {
@@ -471,8 +580,10 @@ public class TenantCreateInputData   {
         Objects.equals(this.phone, tenantCreateInputData.phone) &&
         Objects.equals(this.mobile, tenantCreateInputData.mobile) &&
         Objects.equals(this.fax, tenantCreateInputData.fax) &&
-        Objects.equals(this.email, tenantCreateInputData.email) &&
-        Objects.equals(this.website, tenantCreateInputData.website) &&
+        Objects.equals(this.email, tenantCreateInputData.email) && Objects.equals(this.website, tenantCreateInputData.website) && Objects.equals(
+            this.jiraId, tenantCreateInputData.jiraId) && Objects.equals(this.salesforceId, tenantCreateInputData.salesforceId) && Objects.equals(
+            this.netboxId, tenantCreateInputData.netboxId) && Objects.equals(this.customerAbbreviation,
+            tenantCreateInputData.customerAbbreviation) && Objects.equals(this.neoUrlName, tenantCreateInputData.neoUrlName) &&
         Objects.equals(this.deleted, tenantCreateInputData.deleted) &&
         Objects.equals(this.accessGrants, tenantCreateInputData.accessGrants) &&
         Objects.equals(this.profile, tenantCreateInputData.profile);
@@ -480,7 +591,8 @@ public class TenantCreateInputData   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, matchCode, name2, streetAndNumber, appendix, country, zipCode, city, district, zipCodePoBox, poBox, phone, mobile, fax, email, website, deleted, accessGrants, profile);
+      return Objects.hash(id, name, matchCode, name2, streetAndNumber, appendix, country, zipCode, city, district, zipCodePoBox, poBox, phone, mobile,
+              fax, email, website, jiraId, salesforceId, netboxId, customerAbbreviation, neoUrlName, deleted, accessGrants, profile);
   }
 
   @Override
@@ -505,6 +617,11 @@ public class TenantCreateInputData   {
     sb.append("    fax: ").append(toIndentedString(fax)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    website: ").append(toIndentedString(website)).append("\n");
+      sb.append("    jiraId: ").append(toIndentedString(jiraId)).append("\n");
+      sb.append("    salesforceId: ").append(toIndentedString(salesforceId)).append("\n");
+      sb.append("    netboxId: ").append(toIndentedString(netboxId)).append("\n");
+      sb.append("    customerAbbreviation: ").append(toIndentedString(customerAbbreviation)).append("\n");
+      sb.append("    neoUrlName: ").append(toIndentedString(neoUrlName)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    accessGrants: ").append(toIndentedString(accessGrants)).append("\n");
     sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
@@ -517,12 +634,8 @@ public class TenantCreateInputData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

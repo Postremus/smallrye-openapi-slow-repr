@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ProfileContextInputDataV3;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -18,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProfileUpdateDataV3")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ProfileUpdateDataV3   {
   private Boolean status;
   private @Valid List<@Valid ProfileContextInputDataV3> contexts = new ArrayList<>();
@@ -34,7 +36,9 @@ public class ProfileUpdateDataV3   {
   private String position;
   private String office;
 
-  public ProfileUpdateDataV3() {
+    private @Valid List<String> adapterIdentifiers = new ArrayList<>();
+
+    public ProfileUpdateDataV3() {
   }
 
   @JsonCreator
@@ -171,6 +175,7 @@ public class ProfileUpdateDataV3   {
   }
 
   /**
+   * Id of the tenant this profile belongs to.
    **/
   public ProfileUpdateDataV3 tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -316,6 +321,41 @@ public class ProfileUpdateDataV3   {
     this.office = office;
   }
 
+    /**
+     * External connections of this profile. Contains the automatically and manually created contexts in external applications. List of adapter
+     * identifier names.
+     **/
+    public ProfileUpdateDataV3 adapterIdentifiers(List<String> adapterIdentifiers) {
+        this.adapterIdentifiers = adapterIdentifiers;
+        return this;
+    }
+
+    @JsonProperty("adapterIdentifiers")
+    public List<String> getAdapterIdentifiers() {
+        return adapterIdentifiers;
+    }
+
+    @JsonProperty("adapterIdentifiers")
+    public void setAdapterIdentifiers(List<String> adapterIdentifiers) {
+        this.adapterIdentifiers = adapterIdentifiers;
+    }
+
+    public ProfileUpdateDataV3 addAdapterIdentifiersItem(String adapterIdentifiersItem) {
+        if (this.adapterIdentifiers == null) {
+            this.adapterIdentifiers = new ArrayList<>();
+        }
+
+        this.adapterIdentifiers.add(adapterIdentifiersItem);
+        return this;
+    }
+
+    public ProfileUpdateDataV3 removeAdapterIdentifiersItem(String adapterIdentifiersItem) {
+        if (adapterIdentifiersItem != null && this.adapterIdentifiers != null) {
+            this.adapterIdentifiers.remove(adapterIdentifiersItem);
+        }
+
+        return this;
+    }
 
   @Override
   public boolean equals(Object o) {
@@ -336,14 +376,15 @@ public class ProfileUpdateDataV3   {
         Objects.equals(this.loginLink, profileUpdateDataV3.loginLink) &&
         Objects.equals(this.phone, profileUpdateDataV3.phone) &&
         Objects.equals(this.fax, profileUpdateDataV3.fax) &&
-        Objects.equals(this.department, profileUpdateDataV3.department) &&
-        Objects.equals(this.position, profileUpdateDataV3.position) &&
-        Objects.equals(this.office, profileUpdateDataV3.office);
+        Objects.equals(this.department, profileUpdateDataV3.department) && Objects.equals(this.position,
+            profileUpdateDataV3.position) && Objects.equals(this.office, profileUpdateDataV3.office) && Objects.equals(this.adapterIdentifiers,
+            profileUpdateDataV3.adapterIdentifiers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, contexts, tagIds, isDeveloper, isServiceProvider, tenantId, hasSystemAdministratorContext, loginLink, phone, fax, department, position, office);
+      return Objects.hash(status, contexts, tagIds, isDeveloper, isServiceProvider, tenantId, hasSystemAdministratorContext, loginLink, phone, fax,
+              department, position, office, adapterIdentifiers);
   }
 
   @Override
@@ -364,6 +405,7 @@ public class ProfileUpdateDataV3   {
     sb.append("    department: ").append(toIndentedString(department)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    office: ").append(toIndentedString(office)).append("\n");
+      sb.append("    adapterIdentifiers: ").append(toIndentedString(adapterIdentifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -373,12 +415,8 @@ public class ProfileUpdateDataV3   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -2,6 +2,7 @@ package org.acme.model;
 
 import java.util.Date;
 import java.util.UUID;
+
 import org.acme.model.OrganizationType;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -15,7 +16,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OrganizationMessageData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class OrganizationMessageData   {
   private UUID id;
   private UUID uuid;
@@ -44,7 +46,9 @@ public class OrganizationMessageData   {
   private Boolean isMandator;
   private OrganizationType type;
 
-  public OrganizationMessageData() {
+    private String timeZoneId;
+
+    public OrganizationMessageData() {
   }
 
   @JsonCreator
@@ -67,6 +71,7 @@ public class OrganizationMessageData   {
   }
 
   /**
+   * Id of this organization.
    **/
   public OrganizationMessageData id(UUID id) {
     this.id = id;
@@ -85,6 +90,7 @@ public class OrganizationMessageData   {
   }
 
   /**
+   * UUIDv4 which identifies this organization in external systems.
    **/
   public OrganizationMessageData uuid(UUID uuid) {
     this.uuid = uuid;
@@ -122,6 +128,7 @@ public class OrganizationMessageData   {
   }
 
   /**
+   * Creation date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public OrganizationMessageData createDateTime(Date createDateTime) {
     this.createDateTime = createDateTime;
@@ -140,6 +147,7 @@ public class OrganizationMessageData   {
   }
 
   /**
+   * Last Update date time in ISO-8601 format without timezone information. Default Timezone is UTF-8.
    **/
   public OrganizationMessageData lastUpdateDateTime(Date lastUpdateDateTime) {
     this.lastUpdateDateTime = lastUpdateDateTime;
@@ -185,7 +193,10 @@ public class OrganizationMessageData   {
 
   
   @JsonProperty(required = true, value = "matchCode")
-  @NotNull  @Pattern(regexp="\\S") @Size(max=100)public String getMatchCode() {
+  @NotNull
+  @Pattern(regexp = "[A-Z0-9]*")
+  @Size(max = 100)
+  public String getMatchCode() {
     return matchCode;
   }
 
@@ -467,6 +478,7 @@ public class OrganizationMessageData   {
   }
 
   /**
+   * Id of the tenant this account profile group belongs to.
    **/
   public OrganizationMessageData tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -485,6 +497,7 @@ public class OrganizationMessageData   {
   }
 
   /**
+   * Id of the direct organization parent. Might be null if this is an organization directly below the tenant.
    **/
   public OrganizationMessageData parentId(UUID parentId) {
     this.parentId = parentId;
@@ -539,8 +552,25 @@ public class OrganizationMessageData   {
     this.type = type;
   }
 
+    /**
+     * IANA conform time zone id.
+     **/
+    public OrganizationMessageData timeZoneId(String timeZoneId) {
+        this.timeZoneId = timeZoneId;
+        return this;
+    }
 
-  @Override
+    @JsonProperty("timeZoneId")
+    public String getTimeZoneId() {
+        return timeZoneId;
+    }
+
+    @JsonProperty("timeZoneId")
+    public void setTimeZoneId(String timeZoneId) {
+        this.timeZoneId = timeZoneId;
+    }
+
+    @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;
@@ -572,14 +602,16 @@ public class OrganizationMessageData   {
         Objects.equals(this.website, organizationMessageData.website) &&
         Objects.equals(this.deleted, organizationMessageData.deleted) &&
         Objects.equals(this.tenantId, organizationMessageData.tenantId) &&
-        Objects.equals(this.parentId, organizationMessageData.parentId) &&
-        Objects.equals(this.isMandator, organizationMessageData.isMandator) &&
-        Objects.equals(this.type, organizationMessageData.type);
+        Objects.equals(this.parentId, organizationMessageData.parentId) && Objects.equals(this.isMandator,
+            organizationMessageData.isMandator) && Objects.equals(this.type, organizationMessageData.type) && Objects.equals(this.timeZoneId,
+            organizationMessageData.timeZoneId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, uuid, supportAreaEnabled, createDateTime, lastUpdateDateTime, name, matchCode, name2, streetAndNumber, appendix, country, zipCode, city, district, zipCodePoBox, poBox, phone, mobile, fax, email, website, deleted, tenantId, parentId, isMandator, type);
+      return Objects.hash(id, uuid, supportAreaEnabled, createDateTime, lastUpdateDateTime, name, matchCode, name2, streetAndNumber, appendix,
+              country, zipCode, city, district, zipCodePoBox, poBox, phone, mobile, fax, email, website, deleted, tenantId, parentId, isMandator,
+              type, timeZoneId);
   }
 
   @Override
@@ -613,6 +645,7 @@ public class OrganizationMessageData   {
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    isMandator: ").append(toIndentedString(isMandator)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+      sb.append("    timeZoneId: ").append(toIndentedString(timeZoneId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -622,12 +655,8 @@ public class OrganizationMessageData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

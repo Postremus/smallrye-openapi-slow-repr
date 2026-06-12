@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.TranslationHolderData;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -17,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ContextApplicationDataV2")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ContextApplicationDataV2   {
   private Long id;
   private UUID uuid;
@@ -33,6 +35,8 @@ public class ContextApplicationDataV2   {
   private Boolean enableOrganizationScheduler;
   private @Valid List<Long> applicationGroupIds = new ArrayList<>();
   private Long parentApplicationId;
+
+    private UUID productId;
   private Boolean favourite;
   private Boolean active;
 
@@ -66,6 +70,7 @@ public class ContextApplicationDataV2   {
   }
 
   /**
+   * UUIDv4 which identifies this application in external systems.
    **/
   public ContextApplicationDataV2 uuid(UUID uuid) {
     this.uuid = uuid;
@@ -343,7 +348,27 @@ public class ContextApplicationDataV2   {
     this.parentApplicationId = parentApplicationId;
   }
 
-  /**
+    /**
+     * Product of the application. Has to be a valid id of a product. Can be left empty, in which case the product is automatically set to &#x60;
+     * unknown&#x60;.
+     **/
+    public ContextApplicationDataV2 productId(UUID productId) {
+        this.productId = productId;
+        return this;
+    }
+
+    @JsonProperty("productId")
+    @Pattern(regexp = "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}")
+    public UUID getProductId() {
+        return productId;
+    }
+
+    @JsonProperty("productId")
+    public void setProductId(UUID productId) {
+        this.productId = productId;
+    }
+
+    /**
    * Did the user mark this application as favourite for the current context?
    **/
   public ContextApplicationDataV2 favourite(Boolean favourite) {
@@ -403,15 +428,16 @@ public class ContextApplicationDataV2   {
         Objects.equals(this.endpointOrganizationUUID, contextApplicationDataV2.endpointOrganizationUUID) &&
         Objects.equals(this.enableUserScheduler, contextApplicationDataV2.enableUserScheduler) &&
         Objects.equals(this.enableOrganizationScheduler, contextApplicationDataV2.enableOrganizationScheduler) &&
-        Objects.equals(this.applicationGroupIds, contextApplicationDataV2.applicationGroupIds) &&
-        Objects.equals(this.parentApplicationId, contextApplicationDataV2.parentApplicationId) &&
+        Objects.equals(this.applicationGroupIds, contextApplicationDataV2.applicationGroupIds) && Objects.equals(this.parentApplicationId,
+            contextApplicationDataV2.parentApplicationId) && Objects.equals(this.productId, contextApplicationDataV2.productId) &&
         Objects.equals(this.favourite, contextApplicationDataV2.favourite) &&
         Objects.equals(this.active, contextApplicationDataV2.active);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, uuid, name, category, description, features, url, endpointUser, endpointOrganization, endpointOrganizationUUID, enableUserScheduler, enableOrganizationScheduler, applicationGroupIds, parentApplicationId, favourite, active);
+      return Objects.hash(id, uuid, name, category, description, features, url, endpointUser, endpointOrganization, endpointOrganizationUUID,
+              enableUserScheduler, enableOrganizationScheduler, applicationGroupIds, parentApplicationId, productId, favourite, active);
   }
 
   @Override
@@ -433,6 +459,7 @@ public class ContextApplicationDataV2   {
     sb.append("    enableOrganizationScheduler: ").append(toIndentedString(enableOrganizationScheduler)).append("\n");
     sb.append("    applicationGroupIds: ").append(toIndentedString(applicationGroupIds)).append("\n");
     sb.append("    parentApplicationId: ").append(toIndentedString(parentApplicationId)).append("\n");
+      sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    favourite: ").append(toIndentedString(favourite)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("}");
@@ -444,12 +471,8 @@ public class ContextApplicationDataV2   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

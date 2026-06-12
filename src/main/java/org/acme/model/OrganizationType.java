@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Gets or Sets OrganizationType
  */
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" +
+        ".020268300+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public enum OrganizationType {
   
   SYSTEM("SYSTEM"),

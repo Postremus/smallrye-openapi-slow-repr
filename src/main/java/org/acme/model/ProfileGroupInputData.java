@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ProfileGroupApplicationGrantData;
 import org.acme.model.ProfileGroupRightInputData;
 import org.acme.model.TranslationHolderData;
@@ -19,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProfileGroupInputData")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ProfileGroupInputData   {
   private String matchCode;
   private TranslationHolderData name;
@@ -80,6 +82,7 @@ public class ProfileGroupInputData   {
   }
 
   /**
+   * Id of the tenant this account profile group belongs to.
    **/
   public ProfileGroupInputData tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -207,12 +210,8 @@ public class ProfileGroupInputData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

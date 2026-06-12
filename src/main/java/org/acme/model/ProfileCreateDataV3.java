@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.acme.model.ProfileContextInputDataV3;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
@@ -18,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProfileCreateDataV3")
-@jakarta.annotation.Generated(value = "org.acme.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-11-05T18:35:24.197415100+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-06-12T06:27:49" + ".020268300" +
+        "+02:00[Europe/Berlin]", comments = "Generator version: 7.22.0")
 public class ProfileCreateDataV3   {
   private String firstName;
   private String lastName;
@@ -41,7 +43,9 @@ public class ProfileCreateDataV3   {
   private URI loginLink;
   private String password;
 
-  public ProfileCreateDataV3() {
+    private @Valid List<String> adapterIdentifiers = new ArrayList<>();
+
+    public ProfileCreateDataV3() {
   }
 
   @JsonCreator
@@ -391,6 +395,7 @@ public class ProfileCreateDataV3   {
   }
 
   /**
+   * Id of the tenant this profile belongs to.
    **/
   public ProfileCreateDataV3 tenantId(UUID tenantId) {
     this.tenantId = tenantId;
@@ -463,6 +468,41 @@ public class ProfileCreateDataV3   {
     this.password = password;
   }
 
+    /**
+     * External connections of this profile. Contains the automatically and manually created contexts in external applications. List of adapter
+     * identifier names.
+     **/
+    public ProfileCreateDataV3 adapterIdentifiers(List<String> adapterIdentifiers) {
+        this.adapterIdentifiers = adapterIdentifiers;
+        return this;
+    }
+
+    @JsonProperty("adapterIdentifiers")
+    public List<String> getAdapterIdentifiers() {
+        return adapterIdentifiers;
+    }
+
+    @JsonProperty("adapterIdentifiers")
+    public void setAdapterIdentifiers(List<String> adapterIdentifiers) {
+        this.adapterIdentifiers = adapterIdentifiers;
+    }
+
+    public ProfileCreateDataV3 addAdapterIdentifiersItem(String adapterIdentifiersItem) {
+        if (this.adapterIdentifiers == null) {
+            this.adapterIdentifiers = new ArrayList<>();
+        }
+
+        this.adapterIdentifiers.add(adapterIdentifiersItem);
+        return this;
+    }
+
+    public ProfileCreateDataV3 removeAdapterIdentifiersItem(String adapterIdentifiersItem) {
+        if (adapterIdentifiersItem != null && this.adapterIdentifiers != null) {
+            this.adapterIdentifiers.remove(adapterIdentifiersItem);
+        }
+
+        return this;
+    }
 
   @Override
   public boolean equals(Object o) {
@@ -490,14 +530,15 @@ public class ProfileCreateDataV3   {
         Objects.equals(this.isServiceProvider, profileCreateDataV3.isServiceProvider) &&
         Objects.equals(this.isTechnical, profileCreateDataV3.isTechnical) &&
         Objects.equals(this.tenantId, profileCreateDataV3.tenantId) &&
-        Objects.equals(this.hasSystemAdministratorContext, profileCreateDataV3.hasSystemAdministratorContext) &&
-        Objects.equals(this.loginLink, profileCreateDataV3.loginLink) &&
-        Objects.equals(this.password, profileCreateDataV3.password);
+        Objects.equals(this.hasSystemAdministratorContext, profileCreateDataV3.hasSystemAdministratorContext) && Objects.equals(this.loginLink,
+            profileCreateDataV3.loginLink) && Objects.equals(this.password, profileCreateDataV3.password) && Objects.equals(this.adapterIdentifiers,
+            profileCreateDataV3.adapterIdentifiers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, phone, fax, department, position, office, locale, status, salutationId, email, contexts, tagIds, isDeveloper, isServiceProvider, isTechnical, tenantId, hasSystemAdministratorContext, loginLink, password);
+      return Objects.hash(firstName, lastName, phone, fax, department, position, office, locale, status, salutationId, email, contexts, tagIds,
+              isDeveloper, isServiceProvider, isTechnical, tenantId, hasSystemAdministratorContext, loginLink, password, adapterIdentifiers);
   }
 
   @Override
@@ -525,6 +566,7 @@ public class ProfileCreateDataV3   {
     sb.append("    hasSystemAdministratorContext: ").append(toIndentedString(hasSystemAdministratorContext)).append("\n");
     sb.append("    loginLink: ").append(toIndentedString(loginLink)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+      sb.append("    adapterIdentifiers: ").append(toIndentedString(adapterIdentifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -534,12 +576,8 @@ public class ProfileCreateDataV3   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+      return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-
